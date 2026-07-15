@@ -1,0 +1,21 @@
+{
+  "name": "@jaziel8910/codic",
+  "version": "0.1.0",
+  "description": "Codic live-coding music studio (Codang) — one-command cross-platform CLI",
+  "bin": {
+    "codic": "codic.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaziel8910/codic.git"
+  },
+  "homepage": "https://github.com/Jaziel8910/codic",
+  "bugs": "https://github.com/Jaziel8910/codic/issues",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "codic.js"
+  ]
+}

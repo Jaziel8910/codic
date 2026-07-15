@@ -20,6 +20,26 @@ and a self-describing `.cdc` file format.
 
 ## Install
 
+**Option A — Windows installer (one file).** Download `codic-windows.exe` from the
+[latest release](https://github.com/Jaziel8910/codic/releases/latest), run it, then:
+
+```bat
+codic install --samples
+```
+
+This drops the embedded stdlib/templates/examples into `%USERPROFILE%\.codic` and
+fetches the sample bank.
+
+**Option B — npm / npx (cross-platform).**
+
+```bash
+npx @jaziel8910/codic          # runs the right binary for your OS/arch
+# or
+npm i -g @jaziel8910/codic
+```
+
+**Option C — Go.** Requires a Go toolchain:
+
 ```bash
 go install github.com/Jaziel8910/codic/cmd/codic@latest
 ```
