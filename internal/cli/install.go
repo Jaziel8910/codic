@@ -96,6 +96,12 @@ sounds_dir: ` + filepath.Join(home, "sounds") + `
 				fmt.Println("  . CODIC/bin already on PATH")
 			}
 
+			if err := createDesktopShortcut(home); err != nil {
+				fmt.Fprintf(os.Stderr, "  ! shortcut: %v\n", err)
+			} else {
+				fmt.Println("  - acceso directo 'CODIC' en el Escritorio")
+			}
+
 			if withSamples {
 				if err := installSamples(home); err != nil {
 					fmt.Fprintf(os.Stderr, "  ! samples: %v\n", err)
@@ -522,4 +528,30 @@ func addToPath(dir string) (bool, error) {
 	// Refresh this process's PATH so later steps see it.
 	os.Setenv("PATH", os.Getenv("PATH")+string(os.PathListSeparator)+dir)
 	return true, nil
+}
+
+// createDesktopShortcut puts a "CODIC.lnk" on the user's Desktop pointing at
+// the workspace, so it is easy to find. Best-effort; never fatal.
+func createDesktopShortcut(home string) error {
+	if runtime.GOOS != "windows" {
+		return nil
+	}
+	profile := os.Getenv("USERPROFILE")
+	if profile == "" {
+		return nil
+	}
+	desktop := filepath.Join(profile, "Desktop")
+	if _, err := os.Stat(desktop); err != nil {
+		return nil
+	}
+	lnk := filepath.Join(desktop, "CODIC.lnk")
+	if _, err := os.Stat(lnk); err == nil {
+		return nil // already there
+	}
+	ps := fmt.Sprintf(
+		`$ws=New-Object -ComObject WScript.Shell; $s=$ws.CreateShortcut('%s'); $s.TargetPath='%s'; $s.Description='Codic workspace'; $s.Save()`,
+		lnk, home)
+	cmd := exec.Command("powershell", "-NoProfile", "-Command", ps)
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
 }

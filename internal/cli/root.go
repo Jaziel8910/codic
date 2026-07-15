@@ -36,6 +36,13 @@ or open it with your OS player. No TUI, no realtime engine.`,
 			}
 			return nil
 		},
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if len(args) == 0 {
+				printWelcome()
+				return nil
+			}
+			return cmd.Help()
+		},
 	}
 
 	root.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default CODIC/config.yaml)")
@@ -65,8 +72,27 @@ or open it with your OS player. No TUI, no realtime engine.`,
 	root.AddCommand(pkgCmd())
 	root.AddCommand(installCmd())
 	root.AddCommand(backupCmd())
+	root.AddCommand(openCmd())
 
 	return root
+}
+
+// printWelcome shows a friendly first-run message when `codic` is invoked
+// with no subcommand.
+func printWelcome() {
+	home := CodicDir()
+	fmt.Println("Codic - tu estudio de musica en Codang.")
+	fmt.Println()
+	fmt.Println("Tu workspace global esta en:")
+	fmt.Printf("  %s\n", home)
+	fmt.Println()
+	fmt.Println("Primeros pasos:")
+	fmt.Println("  codic install --samples   descarga los sonidos (una vez)")
+	fmt.Println("  codic open               abre tu carpeta CODIC")
+	fmt.Println("  codic new track mia      crea tu primera cancion")
+	fmt.Println("  codic play <archivo.cdc> escucha lo que hiciste")
+	fmt.Println()
+	fmt.Println("Ayuda:  codic help    |    guia humana: abre QUICKSTART.docx en CODIC")
 }
 
 // initConfig wires up Viper to read ~/.codic/config.yaml.
