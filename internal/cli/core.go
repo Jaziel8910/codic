@@ -179,10 +179,7 @@ func renderCmd() *cobra.Command {
 			if stems {
 				fmt.Fprintln(os.Stderr, "warning: --stems not yet implemented in phase 0")
 			}
-			if duration <= 0 {
-				duration = viper.GetFloat64("default_duration")
-			}
-			fmt.Printf("rendering %s -> %s (%.1fs)\n", in, out, duration)
+			fmt.Printf("rendering %s -> %s\n", in, out)
 			if err := renderToFile(in, out, duration, normalize); err != nil {
 				return err
 			}

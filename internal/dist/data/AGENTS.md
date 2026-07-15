@@ -53,7 +53,32 @@ CODIC/
 
 - Los archivos de música son `.cdc` (Codang). Sintaxis tipo Python:
   `note("c3 d3 e3")`, `stack()`, `fast(2)`, mini-notación `"bd*2 [sd hh] ~"`.
-- Un `.cdc` debe terminar con `.out()` para producir audio renderizable.
+- **Todo `.cdc` empieza declarando `@type`** (uno de los 10 tipos: `mini-loop`,
+  `loop`, `riff`, `groove`, `beat`, `sketch`, `track`, `song`, `epic`,
+  `full-prod-song`). El tipo OBLIGA a una complejidad mínima: ciclos, capas
+  (`.out()`), secciones (`section("nombre", patron)`) y arreglo (`cat(...)`).
+  Codang **rechaza** el render si no se cumple. Consulta `codic lang types`.
+- NO entregues loops sueltos pegados: una canción de verdad tiene intro, versos,
+  coros, puente/outro. Nombra cada parte con `section(...)` y únelas en un
+  arreglo. La duración sale de `@cycles` + `@bpm`/`@cps` (no de un valor fijo).
+- Un `.cdc` debe terminar cada capa con `.out()` para producir audio.
+
+Cabecera mínima de una canción completa:
+
+```
+@type full-prod-song
+@title "Nombre"
+@cycles 128
+@bpm 120
+
+section("intro",  s("bd ~ ~ ~"))
+section("verse",  s("bd sd"))
+section("chorus", s("bd*2 sd"))
+# … más secciones (pre-chorus, bridge, breakdown, outro) …
+cat(s("intro"), s("verse"), s("chorus")).out()   # arreglo
+s("bd*4").out()                                   # más capas
+note("c2 e2 g2").out()
+```
 - Los proyectos (álbumes) usan `project.yaml` y se gestionan con
   `codic project` / `codic track`.
 - No borres `sounds/`, `stdlib/`, `config.yaml` ni `docs/`; son parte del programa.

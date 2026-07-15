@@ -28,6 +28,7 @@ func langCmd() *cobra.Command {
 	cmd.AddCommand(langModuleCmd())
 	cmd.AddCommand(langCompletionsCmd())
 	cmd.AddCommand(langEvalCmd())
+	cmd.AddCommand(langTypesCmd())
 	return cmd
 }
 
@@ -136,6 +137,18 @@ func langLintCmd() *cobra.Command {
 			}
 			if strings.Contains(src, "speed(") && strings.Contains(src, "superavage") {
 				fmt.Println("INFO: using superavage (good!)")
+			}
+			if prog, e := codang.Parse(src); e == nil {
+				errs, warns := codang.ValidateSong(prog)
+				if len(errs) > 0 {
+					for _, er := range errs {
+						fmt.Printf("ERROR: %s\n", er)
+						problems++
+					}
+				}
+				for _, w := range warns {
+					fmt.Printf("WARN: %s\n", w)
+				}
 			}
 			if problems == 0 {
 				fmt.Printf("%s: OK\n", args[0])
@@ -393,6 +406,22 @@ func langEvalCmd() *cobra.Command {
 	}
 	cmd.Flags().Float64Var(&secs, "sec", 2, "preview length in seconds")
 	return cmd
+}
+
+func langTypesCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "types",
+		Short: "List the 10 Codang song types (mini-loop to full-prod-song)",
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("Tipos de cancion en Codang (elige bien - el tipo exige la complejidad):")
+			fmt.Println()
+			for _, t := range codang.SongTypeList {
+				fmt.Println(t.Summary())
+				fmt.Println()
+			}
+			fmt.Printf("Usa @type <id> al inicio de tu .cdc. Validos: %s\n", codang.ValidTypeList())
+		},
+	}
 }
 
 var langReference = `Codang quick reference

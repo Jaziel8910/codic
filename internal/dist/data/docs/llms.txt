@@ -1,29 +1,30 @@
-﻿===== 00-bienvenida.md =====
+===== 00-bienvenida.md =====
+
 # Bienvenida a Codic
 
-**Codic** es un estudio de mÃºsica que vive dentro de la terminal (esa pantalla
-negra con letras). No necesitas saber tocar un instrumento, ni saber quÃ© es la
-programaciÃ³n. Solo escribes frases sencillas y Codic las convierte en mÃºsica que
+**Codic** es un estudio de música que vive dentro de la terminal (esa pantalla
+negra con letras). No necesitas saber tocar un instrumento, ni saber qué es la
+programación. Solo escribes frases sencillas y Codic las convierte en música que
 suena en bucle, para siempre, hasta que lo detengas.
 
-El lenguaje en el que escribes se llama **Codang** (se pronuncia "cÃ³dang").
-EstÃ¡ diseÃ±ado para que cualquier persona, sin experiencia tÃ©cnica, pueda
-componer beats, melodÃ­as y canciones completas.
+El lenguaje en el que escribes se llama **Codang** (se pronuncia "códang").
+Está diseñado para que cualquier persona, sin experiencia técnica, pueda
+componer beats, melodías y canciones completas.
 
 ---
 
-## Â¿QuÃ© puedes hacer con Codic?
+## ¿Qué puedes hacer con Codic?
 
-- Crear ritmos de baterÃ­a (kick, snare, hi-hatâ€¦) que suenan en bucle.
-- Hacer melodÃ­as con notas musicales (`do`, `re`, `mi`â€¦ o nÃºmeros).
-- Mezclar varios ritmos y melodÃ­as a la vez.
-- Alterar la mÃºsica al azar, para que nunca suene igual dos veces.
-- Armar un **Ã¡lbum** con varias pistas y exportarlo a un programa de mÃºsica
+- Crear ritmos de batería (kick, snare, hi-hat…) que suenan en bucle.
+- Hacer melodías con notas musicales (`do`, `re`, `mi`… o números).
+- Mezclar varios ritmos y melodías a la vez.
+- Alterar la música al azar, para que nunca suene igual dos veces.
+- Armar un **álbum** con varias pistas y exportarlo a un programa de música
   profesional (un "DAW" como Bitwig, Reaper o Ableton).
 
 ---
 
-## Tu primera canciÃ³n
+## Tu primera canción
 
 Escribe esto en un archivo llamado `miprimera.cdc`:
 
@@ -34,7 +35,7 @@ pista.out()
 
 Eso es todo. Significa: "toca, en orden, un kick (`bd`), un snare (`sd`),
 un hi-hat (`hh`) y un clap (`cp`), y que suene". Cuando lo reproduces,
-escucharÃ¡s un beat de baterÃ­a bÃ¡sico que se repite.
+escucharás un beat de batería básico que se repite.
 
 Para escucharlo, desde la terminal:
 
@@ -44,22 +45,22 @@ codic file miprimera.cdc
 
 ---
 
-## CÃ³mo leer esta documentaciÃ³n
+## Cómo leer esta documentación
 
-EstÃ¡ pensada para alguien que **nunca ha programado**. Por eso explicamos cada
+Está pensada para alguien que **nunca ha programado**. Por eso explicamos cada
 idea desde cero, con ejemplos que puedes copiar y pegar.
 
-Archivos de esta guÃ­a:
+Archivos de esta guía:
 
-1. `01-ideas-basicas.md` â€” las ideas que necesitas (patrÃ³n, sonido, nota, parÃ¡metro).
-2. `02-escribir-codang.md` â€” cÃ³mo se escribe el lenguaje.
-3. `03-mini-notacion.md` â€” el atajo de texto para escribir ritmos rÃ¡pido.
-4. `04-sonido-parametros.md` â€” cÃ³mo cambiar el volumen, el paneo, el filtro, etc.
-5. `05-transformar-patrones.md` â€” acelerar, invertir, repetir, al azarâ€¦
-6. `06-combinar-y-vivir.md` â€” juntar varios patrones y darles vida.
-7. `07-albumes-stems-exportar.md` â€” Ã¡lbumes, pistas de terceros y exportar.
-8. `08-recetas-ejemplos.md` â€” recetas listas para usar.
-9. `09-referencia-completa.md` â€” la lista de todo lo que existe.
+1. `01-ideas-basicas.md` — las ideas que necesitas (patrón, sonido, nota, parámetro).
+2. `02-escribir-codang.md` — cómo se escribe el lenguaje.
+3. `03-mini-notacion.md` — el atajo de texto para escribir ritmos rápido.
+4. `04-sonido-parametros.md` — cómo cambiar el volumen, el paneo, el filtro, etc.
+5. `05-transformar-patrones.md` — acelerar, invertir, repetir, al azar…
+6. `06-combinar-y-vivir.md` — juntar varios patrones y darles vida.
+7. `07-albumes-stems-exportar.md` — álbumes, pistas de terceros y exportar.
+8. `08-recetas-ejemplos.md` — recetas listas para usar.
+9. `09-referencia-completa.md` — la lista de todo lo que existe.
 
 ---
 
@@ -67,31 +68,32 @@ Archivos de esta guÃ­a:
 
 En Codic casi todo sucede dentro de un **ciclo** (loop). Imagina un ciclo como
 una vuelta de carrusel: cuando termina, vuelve a empezar, una y otra vez.
-Por defecto un ciclo dura un compÃ¡s (4 golpes). TÃº decides quÃ© pasa en esa
+Por defecto un ciclo dura un compás (4 golpes). Tú decides qué pasa en esa
 vuelta, y Codic la repite para siempre.
 
-No tienes que pensar en "detener" la mÃºsica; Codic la mantiene sonando en bucle
+No tienes que pensar en "detener" la música; Codic la mantiene sonando en bucle
 hasta que cierras el programa.
 
 
 ===== 01-ideas-basicas.md =====
-# Ideas bÃ¡sicas (sin saber programar)
 
-AquÃ­ explicamos las cuatro palabras que usaremos todo el tiempo. No son
-tÃ©rminos de computadora complicados: son ideas musicales sencillas.
+# Ideas básicas (sin saber programar)
+
+Aquí explicamos las cuatro palabras que usaremos todo el tiempo. No son
+términos de computadora complicados: son ideas musicales sencillas.
 
 ---
 
-## 1. PatrÃ³n (pattern)
+## 1. Patrón (pattern)
 
-Un **patrÃ³n** es simplemente "una idea musical que se repite". Por ejemplo:
-"un kick en cada vuelta" es un patrÃ³n. "La nota do, luego re, luego mi" es otro
-patrÃ³n.
+Un **patrón** es simplemente "una idea musical que se repite". Por ejemplo:
+"un kick en cada vuelta" es un patrón. "La nota do, luego re, luego mi" es otro
+patrón.
 
-En Codic, cuando escribes algo como `sonido("bd")`, obtienes un patrÃ³n: la idea
+En Codic, cuando escribes algo como `sonido("bd")`, obtienes un patrón: la idea
 de "tocar un kick, una y otra vez".
 
-PiÃ©nsalo como una cinta magnÃ©tica en bucle: la mÃºsica estÃ¡ grabada en la cinta
+Piénsalo como una cinta magnética en bucle: la música está grabada en la cinta
 y se reproduce sin parar.
 
 ---
@@ -99,9 +101,9 @@ y se reproduce sin parar.
 ## 2. Sonido (sound)
 
 Un **sonido** es el "instrumento" o "sample" que suena. Codic trae varios
-sonidos de baterÃ­a ya incluidos, por su nombre corto:
+sonidos de batería ya incluidos, por su nombre corto:
 
-| Nombre | QuÃ© es          |
+| Nombre | Qué es          |
 |--------|-----------------|
 | `bd`   | bombo (kick)    |
 | `sd`   | caja (snare)    |
@@ -111,7 +113,7 @@ sonidos de baterÃ­a ya incluidos, por su nombre corto:
 | `rim`  | golpe de borde  |
 | `cy`   | platillo (cymbal)|
 
-Y muchos mÃ¡s. TambiÃ©n puedes usar sonidos con forma de onda (sintetizadores):
+Y muchos más. También puedes usar sonidos con forma de onda (sintetizadores):
 `seno` (sine), `sierra` (saw), `triangulo` (tri), `cuadrada` (square).
 
 Para usarlos escribes: `sonido("bd")` o su forma corta `s("bd")`.
@@ -121,32 +123,32 @@ Para usarlos escribes: `sonido("bd")` o su forma corta `s("bd")`.
 ## 3. Nota (note)
 
 Una **nota** es una altura musical: aguda o grave. Puedes escribirla con su
-nombre (`do`, `re`, `mi`, `fa`, `sol`, `la`, `si`) y su octava, o con un nÃºmero.
+nombre (`do`, `re`, `mi`, `fa`, `sol`, `la`, `si`) y su octava, o con un número.
 
 Ejemplos:
 
 ```
 nota("do3")        # do en la octava 3
 nota("re#4")       # re sostenido en la octava 4
-nota(60)           # el nÃºmero 60 tambiÃ©n es una nota (do4 en el sistema MIDI)
+nota(60)           # el número 60 también es una nota (do4 en el sistema MIDI)
 ```
 
-No necesitas entender los nÃºmeros: puedes usar siempre los nombres (`do`, `re`â€¦).
-Cuantos mÃ¡s alto el nÃºmero de octava (3, 4, 5â€¦), mÃ¡s aguda suena.
+No necesitas entender los números: puedes usar siempre los nombres (`do`, `re`…).
+Cuantos más alto el número de octava (3, 4, 5…), más aguda suena.
 
 ---
 
-## 4. ParÃ¡metro (parameter)
+## 4. Parámetro (parameter)
 
-Un **parÃ¡metro** es un "mando" que cambia cÃ³mo suena el patrÃ³n. Son como los
-potenciÃ³metros de una consola de mezcla:
+Un **parámetro** es un "mando" que cambia cómo suena el patrón. Son como los
+potenciómetros de una consola de mezcla:
 
-- **volumen** (`gain`): quÃ© tan fuerte suena.
-- **paneo** (`pan`): si suena mÃ¡s a la izquierda o a la derecha.
+- **volumen** (`gain`): qué tan fuerte suena.
+- **paneo** (`pan`): si suena más a la izquierda o a la derecha.
 - **filtro** (`cutoff`): si suena graves (oscuro) o agudos (brillante).
-- **reverberaciÃ³n** (`room`): si suena en un cuarto pequeÃ±o o en una catedral.
+- **reverberación** (`room`): si suena en un cuarto pequeño o en una catedral.
 
-Para aplicar un parÃ¡metro usas un punto (`.`) y su nombre:
+Para aplicar un parámetro usas un punto (`.`) y su nombre:
 
 ```
 sonido("bd").volumen(0.8)
@@ -156,12 +158,12 @@ Se lee: "sonido bd, con volumen 0.8".
 
 ---
 
-## CÃ³mo se juntan
+## Cómo se juntan
 
 La receta siempre es:
 
 ```
-[un patrÃ³n] . [un parÃ¡metro] (opcional) .out()
+[un patrón] . [un parámetro] (opcional) .out()
 ```
 
 Por ejemplo:
@@ -171,14 +173,14 @@ mi_beat = sonido("bd sd hh cp").volumen(0.7)
 mi_beat.out()
 ```
 
-Eso es Codic en una frase: **creas un patrÃ³n, le das forma con parÃ¡metros, y lo
+Eso es Codic en una frase: **creas un patrón, le das forma con parámetros, y lo
 haces sonar con `.out()`.**
 
 ---
 
 ## El punto (`.`) es tu amigo
 
-El punto `.` significa "y ademÃ¡s aplÃ­cale esto". Puedes encadenar varios:
+El punto `.` significa "y además aplícale esto". Puedes encadenar varios:
 
 ```
 sonido("bd sd").volumen(0.8).paneo(-0.5).filtro(1200).room(0.3)
@@ -189,32 +191,33 @@ orden que quieras.
 
 
 ===== 02-escribir-codang.md =====
-# CÃ³mo escribir en Codang
 
-Codang es un lenguaje pequeÃ±o y amable. Solo necesitas recordar tres cosas:
+# Cómo escribir en Codang
+
+Codang es un lenguaje pequeño y amable. Solo necesitas recordar tres cosas:
 **asignar un nombre**, **encadenar con punto**, y **hacer sonar con `.out()`**.
 
 ---
 
 ## Asignar un nombre (=)
 
-Cuando quieres guardar una idea musical para usarla despuÃ©s, le pones un nombre
+Cuando quieres guardar una idea musical para usarla después, le pones un nombre
 con el signo igual (`=`). No escribes `:=` ni otras cosas: solo `=`.
 
 ```
 mi_beat = sonido("bd sd hh cp")
 ```
 
-Ahora `mi_beat` es esa idea. Puedes usarla mÃ¡s abajo.
+Ahora `mi_beat` es esa idea. Puedes usarla más abajo.
 
-> Nota: el nombre puede tener letras, nÃºmeros y guion bajo (`_`). Mejor sin
+> Nota: el nombre puede tener letras, números y guion bajo (`_`). Mejor sin
 > espacios. Ejemplos buenos: `bateria`, `melodia_1`, `bajo_feo`.
 
 ---
 
 ## Encadenar con punto (.)
 
-Para cambiar cÃ³mo suena, escribes un punto y el nombre del mando:
+Para cambiar cómo suena, escribes un punto y el nombre del mando:
 
 ```
 mi_beat = sonido("bd sd hh cp").volumen(0.7).room(0.2)
@@ -237,19 +240,19 @@ Si no escribes `.out()`, Codic solo "recuerda" la idea pero no la reproduce.
 
 ---
 
-## Funciones (func â€¦)
+## Funciones (func …)
 
 A veces quieres una "receta" que repites con distintos valores. En Codang eso es
-una **funciÃ³n**. Se escribe con `func`, el nombre, los ingredientes entre
-parÃ©ntesis, y dos puntos `:`.
+una **función**. Se escribe con `func`, el nombre, los ingredientes entre
+paréntesis, y dos puntos `:`.
 
 ```
 func mas_rapido(x):
     x.rapido(2)
 ```
 
-Se lee: "la funciÃ³n `mas_rapido` recibe algo llamado `x` y lo devuelve el doble
-de rÃ¡pido". El `x.rapido(2)` es lo que hace.
+Se lee: "la función `mas_rapido` recibe algo llamado `x` y lo devuelve el doble
+de rápido". El `x.rapido(2)` es lo que hace.
 
 Para usarla:
 
@@ -258,7 +261,7 @@ bateria = sonido("bd sd hh cp")
 bateria.mas_rapido().out()
 ```
 
-Las funciones sirven para no repetirte. TambiÃ©n las usa Codic para los efectos
+Las funciones sirven para no repetirte. También las usa Codic para los efectos
 aleatorios (ver `06-combinar-y-vivir.md`).
 
 ---
@@ -280,7 +283,7 @@ Un "programa" en Codic es solo una lista de frases, de arriba hacia abajo.
 Ejemplo de un archivo `cancion.cdc`:
 
 ```
-# Mi primera canciÃ³n
+# Mi primera canción
 bateria = sonido("bd sd hh cp").volumen(0.7)
 bajo    = nota("do2 re2 mi2 sol2").volumen(0.5)
 melodia = nota("do5 mi5 sol5").volumen(0.4).sintetizador("sierra")
@@ -289,16 +292,17 @@ melodia = nota("do5 mi5 sol5").volumen(0.4).sintetizador("sierra")
 pila(bateria, bajo, melodia).out()
 ```
 
-Eso es todo lo que necesitas saber de "sintaxis". El resto de la guÃ­a es quÃ©
+Eso es todo lo que necesitas saber de "sintaxis". El resto de la guía es qué
 palabras (sonidos, notas, mandos) puedes usar.
 
 
 ===== 03-mini-notacion.md =====
-# Mini-notaciÃ³n (el atajo de texto)
 
-Dentro de las comillas `sonido("â€¦")` y `nota("â€¦")` puedes escribir ritmos
-rapidÃ­simo usando sÃ­mbolos cortos. A esto lo llamamos **mini-notaciÃ³n**. Es como
-taquigrafÃ­a musical.
+# Mini-notación (el atajo de texto)
+
+Dentro de las comillas `sonido("…")` y `nota("…")` puedes escribir ritmos
+rapidísimo usando símbolos cortos. A esto lo llamamos **mini-notación**. Es como
+taquigrafía musical.
 
 ---
 
@@ -325,8 +329,8 @@ sonido("bd, hh")          # kick y hihat sonando juntos
 
 ## Los corchetes `[ ]` = grupo
 
-Agrupan varias cosas para tratarlas como una sola unidad. AquÃ­ dentro la coma
-tambiÃ©n significa "a la vez":
+Agrupan varias cosas para tratarlas como una sola unidad. Aquí dentro la coma
+también significa "a la vez":
 
 ```
 sonido("[bd hh] sd")      # (kick+hihat) y luego snare
@@ -334,16 +338,16 @@ sonido("[bd hh] sd")      # (kick+hihat) y luego snare
 
 ---
 
-## Las llaves `{ }` = polÃ­metro
+## Las llaves `{ }` = polímetro
 
 Toca varias secuencias a la vez pero con compases distintos, de modo que se
 cruzan de forma interesante:
 
 ```
-sonido("{bd sd, hh hh hh}")   # dos ritmos que chocan entre sÃ­
+sonido("{bd sd, hh hh hh}")   # dos ritmos que chocan entre sí
 ```
 
-Puedes aÃ±adir `%` para fijar cuÃ¡ntas subdivisiones:
+Puedes añadir `%` para fijar cuántas subdivisiones:
 
 ```
 sonido("{bd sd, hh*3}%4")
@@ -361,19 +365,19 @@ sonido("<bd sd hh cp>")   # ciclo 1: bd, ciclo 2: sd, ciclo 3: hh, ciclo 4: cp, 
 
 ---
 
-## El asterisco `*` = repetir (mÃ¡s rÃ¡pido)
+## El asterisco `*` = repetir (más rápido)
 
 ```
-sonido("bd*4")            # el kick suena 4 veces en el ciclo (mÃ¡s rÃ¡pido)
+sonido("bd*4")            # el kick suena 4 veces en el ciclo (más rápido)
 sonido("hh*8")            # hihat 8 veces
 ```
 
 ---
 
-## La barra `/` = alargar (mÃ¡s lento)
+## La barra `/` = alargar (más lento)
 
 ```
-sonido("bd/2")            # el kick suena la mitad de rÃ¡pido (mÃ¡s espaciado)
+sonido("bd/2")            # el kick suena la mitad de rápido (más espaciado)
 ```
 
 ---
@@ -388,9 +392,9 @@ sonido("bd? sd? hh?")     # cada golpe puede aparecer o no, al azar
 
 ---
 
-## El signo `:` = nÃºmero de nota
+## El signo `:` = número de nota
 
-Para sonidos de baterÃ­a puedes fijar un "tono" con dos puntos y un nÃºmero:
+Para sonidos de batería puedes fijar un "tono" con dos puntos y un número:
 
 ```
 sonido("bd:3")            # el sonido bd suena afinado a la nota 3
@@ -398,20 +402,20 @@ sonido("bd:3")            # el sonido bd suena afinado a la nota 3
 
 ---
 
-## ParÃ©ntesis `(n, m)` = ritmo euclÃ­deo
+## Paréntesis `(n, m)` = ritmo euclídeo
 
-Crea patrones rÃ­tmicos repartidos de forma pareja (como el taladro de un neumÃ¡tico):
+Crea patrones rítmicos repartidos de forma pareja (como el taladro de un neumático):
 
 ```
 sonido("bd(3,8)")         # 3 golpes repartidos en 8, tipo "10010010"
 sonido("sd(5,8)")         # 5 golpes repartidos en 8
 ```
 
-Puedes aÃ±adir un tercer nÃºmero para rotar el patrÃ³n: `bd(3,8,1)`.
+Puedes añadir un tercer número para rotar el patrón: `bd(3,8,1)`.
 
 ---
 
-## El sÃ­mbolo `~` = silencio
+## El símbolo `~` = silencio
 
 Deja un hueco en blanco:
 
@@ -428,26 +432,27 @@ ritmo = sonido("bd*4 [sd hh] hh*2 ~ cp?")
 ritmo.out()
 ```
 
-TÃ³mate un momento en leerlo sÃ­mbolo por sÃ­mbolo. Esa sola lÃ­nea dice: "kick 4
+Tómate un momento en leerlo símbolo por símbolo. Esa sola línea dice: "kick 4
 veces, luego snare+hihat juntos, luego hihat 2 veces, un silencio, y un clap
-que a veces aparece". En un compÃ¡s. Se repite para siempre.
+que a veces aparece". En un compás. Se repite para siempre.
 
 
 ===== 04-sonido-parametros.md =====
-# Sonido y parÃ¡metros
 
-AquÃ­ estÃ¡ la lista de todo lo que puedes usar para dar forma a tu sonido. Cada
+# Sonido y parámetros
+
+Aquí está la lista de todo lo que puedes usar para dar forma a tu sonido. Cada
 mando se aplica con un punto: `sonido("bd").volumen(0.8)`.
 
-Recuerda: los nÃºmeros van del **0 al 1** para cosas como volumen y paneo, y en
+Recuerda: los números van del **0 al 1** para cosas como volumen y paneo, y en
 **hertz (Hz)** para frecuencias. No te preocupes por las unidades: juega con los
-nÃºmeros hasta que suene bien.
+números hasta que suene bien.
 
 ---
 
-## Sonidos de baterÃ­a (samples)
+## Sonidos de batería (samples)
 
-Estos se usan con `sonido("â€¦")` o `s("â€¦")`:
+Estos se usan con `sonido("…")` o `s("…")`:
 
 `bd` (bombo), `sd` (caja), `rim` (borde), `sn` (snare), `lt` `mt` `ht`
 (toms), `hh` (hi-hat cerrado), `oh` (hi-hat abierto), `cy`/`cym` (platillo),
@@ -456,38 +461,38 @@ Estos se usan con `sonido("â€¦")` o `s("â€¦")`:
 
 ## Sintetizadores (ondas)
 
-Para melodÃ­as usas `nota(â€¦)` con un "tipo de onda":
+Para melodías usas `nota(…)` con un "tipo de onda":
 
-- `seno` / `sine` â€” suave y redondo
-- `sierra` / `saw` â€” brillante y Ã¡spero
-- `triangulo` / `tri` â€” medio
-- `cuadrada` / `square` â€” fuerte y chillonas
-- `isaw`, `coseno` â€” variantes
+- `seno` / `sine` — suave y redondo
+- `sierra` / `saw` — brillante y áspero
+- `triangulo` / `tri` — medio
+- `cuadrada` / `square` — fuerte y chillonas
+- `isaw`, `coseno` — variantes
 
 ```
 nota("do3 re3 mi3").sintetizador("sierra")
 ```
 
-O tambiÃ©n puedes usar las ondas directamente como patrones de "seÃ±al": `seno`,
+O también puedes usar las ondas directamente como patrones de "señal": `seno`,
 `sierra`, `triangulo`, `cuadrada` (suelen servir como moduladores, ver `lfo`).
 
 ---
 
-## ParÃ¡metros de mezcla
+## Parámetros de mezcla
 
-| Mando | QuÃ© hace | Rango |
+| Mando | Qué hace | Rango |
 |-------|----------|-------|
-| `volumen(n)` / `gain` | fuerza del sonido | 0â€“1 |
-| `paneo(n)` / `pan` | izquierda(âˆ’1) â†” derecha(+1) | âˆ’1 a 1 |
-| `velocidad` / `speed` | velocidad de reproducciÃ³n del sample | >0 |
-| `room` / `reverb` | eco/ambiente | 0â€“1 |
-| `roomsize` | tamaÃ±o de la sala (eco) | 0â€“1 |
-| `roomfade` | tiempo de desvanecido del eco | 0â€“1 |
-| `delay` | eco corto | 0â€“1 |
+| `volumen(n)` / `gain` | fuerza del sonido | 0–1 |
+| `paneo(n)` / `pan` | izquierda(−1) ↔ derecha(+1) | −1 a 1 |
+| `velocidad` / `speed` | velocidad de reproducción del sample | >0 |
+| `room` / `reverb` | eco/ambiente | 0–1 |
+| `roomsize` | tamaño de la sala (eco) | 0–1 |
+| `roomfade` | tiempo de desvanecido del eco | 0–1 |
+| `delay` | eco corto | 0–1 |
 | `delaytime` | tiempo del eco | segundos |
-| `delayfeedback` | cuÃ¡nto rebota el eco | 0â€“1 |
-| `delaysync` | sincroniza el eco al tempo | 0â€“1 |
-| `crush` | distorsiÃ³n de "videojuego viejo" (bitcrush) | >0 |
+| `delayfeedback` | cuánto rebota el eco | 0–1 |
+| `delaysync` | sincroniza el eco al tempo | 0–1 |
+| `crush` | distorsión de "videojuego viejo" (bitcrush) | >0 |
 
 Ejemplo:
 
@@ -499,15 +504,15 @@ sonido("bd sd").volumen(0.8).paneo(-0.3).room(0.4)
 
 ## Filtros (quitan o dejan frecuencias)
 
-| Mando | QuÃ© hace | Rango |
+| Mando | Qué hace | Rango |
 |-------|----------|-------|
 | `filtro(n)` / `cutoff` | corte del filtro (brillo) | Hz |
-| `resonancia` / `res` | Ã©nfasis del filtro | 0â€“1 |
+| `resonancia` / `res` | énfasis del filtro | 0–1 |
 | `lpf` | filtro paso-bajo | Hz |
 | `hpf` | filtro paso-alto | Hz |
-| `hpq` / `lpq` | "calidad" (resonancia) de esos filtros | 0â€“1 |
+| `hpq` / `lpq` | "calidad" (resonancia) de esos filtros | 0–1 |
 | `bpf` / `bpq` | filtro paso-banda | Hz |
-| `djf` | filtro tipo DJ (barrido) | 0â€“1 |
+| `djf` | filtro tipo DJ (barrido) | 0–1 |
 
 ```
 sonido("hh*8").filtro(8000).resonancia(0.2)
@@ -515,12 +520,12 @@ sonido("hh*8").filtro(8000).resonancia(0.2)
 
 ---
 
-## DistorsiÃ³n y carÃ¡cter
+## Distorsión y carácter
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `distorsion(n)` / `dist` / `drive` | distorsiÃ³n |
-| `distorttype` | tipo de distorsiÃ³n |
+| `distorsion(n)` / `dist` / `drive` | distorsión |
+| `distorttype` | tipo de distorsión |
 | `vib` / `vibracion` | vibrato (temblor de tono) |
 | `vibmod` | cantidad de vibrato |
 | `vowel` / `vocal` | formante vocal (`a`, `e`, `i`, `o`, `u`) |
@@ -534,13 +539,13 @@ sonido("hh*8").filtro(8000).resonancia(0.2)
 
 ---
 
-## Envolvente (cÃ³mo ataca y se apaga el sonido)
+## Envolvente (cómo ataca y se apaga el sonido)
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `ataque` / `attack` | cuÃ¡nto tarda en aparecer |
-| `sostenido` / `sustain` | cuÃ¡nto se mantiene |
-| `liberacion` / `release` | cuÃ¡nto tarda en apagarse |
+| `ataque` / `attack` | cuánto tarda en aparecer |
+| `sostenido` / `sustain` | cuánto se mantiene |
+| `liberacion` / `release` | cuánto tarda en apagarse |
 | `forma` / `shape` | forma de la onda de volumen |
 | `decay` | decaimiento |
 | `adsr(a, s, d, r)` | los cuatro de una vez |
@@ -551,28 +556,28 @@ sonido("bd").adsr(0.01, 0.1, 0.5, 0.2)
 
 ---
 
-## Otros mandos Ãºtiles
+## Otros mandos útiles
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
 | `frecuencia(n)` / `freq` | fija la frecuencia en Hz |
 | `transponer(n)` / `ftranspose` | sube/baja el tono (semitonos) |
-| `detune` | desafinaciÃ³n sutil (grosor) |
+| `detune` | desafinación sutil (grosor) |
 | `octava(n)` | sube/baja octavas enteras |
-| `ancho_pan` / `panwidth` | ancho del paneo estÃ©reo |
+| `ancho_pan` / `panwidth` | ancho del paneo estéreo |
 | `acelerar` / `accelerate` | acelera el sample |
 | `loop` / `loopBegin` / `loopEnd` / `loopSample` | reproduce solo un trozo del sample |
 | `cut` | recorte (vinyl cut) |
-| `orbit` | envÃ­a a un "canal" de efectos |
+| `orbit` | envía a un "canal" de efectos |
 | `canal` / `channel` | canal de salida |
 | `etiqueta` / `label` / `tag` / `color` | marca para organizar |
 
 ---
 
-## LFO (movimiento automÃ¡tico)
+## LFO (movimiento automático)
 
 Un **LFO** hace que un mando suba y baje solo, en bucle, como un robot moviendo
-el potenciÃ³metro:
+el potenciómetro:
 
 ```
 sonido("bd").lfo("pan", 1, 0.5)     # el paneo va de lado a lado 1 vez por ciclo
@@ -583,45 +588,46 @@ sonido("hh").lfo("cutoff", 2, 4000) # el filtro sube y baja
 
 ---
 
-## Modo "seÃ±al" de los mandos
+## Modo "señal" de los mandos
 
-Casi cualquier mando puede recibir una **seÃ±al** en vez de un nÃºmero, para que
+Casi cualquier mando puede recibir una **señal** en vez de un número, para que
 cambie con el tiempo. Por ejemplo `volumen(seno)` hace que el volumen suba y
 baje con una onda. Esto es avanzado; juega con `lfo` primero.
 
 
 ===== 05-transformar-patrones.md =====
+
 # Transformar patrones
 
-Estos mandos cambian la **estructura** de tu patrÃ³n: su velocidad, su orden, su
-repeticiÃ³n. Se aplican con punto, igual que los parÃ¡metros.
+Estos mandos cambian la **estructura** de tu patrón: su velocidad, su orden, su
+repetición. Se aplican con punto, igual que los parámetros.
 
 ---
 
 ## Velocidad y tiempo
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `rapido(n)` / `fast` | suena n veces mÃ¡s rÃ¡pido |
-| `lento(n)` / `slow` | suena n veces mÃ¡s lento |
-| `adelantar(n)` / `early` | corre el patrÃ³n hacia el inicio |
-| `atrasar(n)` / `late` | corre el patrÃ³n hacia el final |
-| `iter(n)` | desplaza el patrÃ³n ciclo a ciclo |
-| `iterBack(n)` | desplaza hacia atrÃ¡s |
+| `rapido(n)` / `fast` | suena n veces más rápido |
+| `lento(n)` / `slow` | suena n veces más lento |
+| `adelantar(n)` / `early` | corre el patrón hacia el inicio |
+| `atrasar(n)` / `late` | corre el patrón hacia el final |
+| `iter(n)` | desplaza el patrón ciclo a ciclo |
+| `iterBack(n)` | desplaza hacia atrás |
 
 ```
-sonido("bd sd").rapido(2)     # el beat va el doble de rÃ¡pido
-sonido("bd sd").lento(2)      # la mitad de rÃ¡pido
+sonido("bd sd").rapido(2)     # el beat va el doble de rápido
+sonido("bd sd").lento(2)      # la mitad de rápido
 ```
 
 ---
 
 ## Orden
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `revertir()` / `rev` | toca al revÃ©s |
-| `palindromo()` / `palindrome` | ida y vuelta (abc â†’ abcba) |
+| `revertir()` / `rev` | toca al revés |
+| `palindromo()` / `palindrome` | ida y vuelta (abc → abcba) |
 | `brak()` | efecto "breakbeat" (ralentiza y acelera) |
 | `mezclar()` / `shuffle` / `scramble` | desordena al azar |
 
@@ -633,10 +639,10 @@ sonido("bd sd hh cp").revertir()
 
 ## Recorte y zoom
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `zoom(a, b)` | usa solo la parte del ciclo entre a y b (0â€“1) |
-| `estirar(n)` / `stretch` | estira el patrÃ³n |
+| `zoom(a, b)` | usa solo la parte del ciclo entre a y b (0–1) |
+| `estirar(n)` / `stretch` | estira el patrón |
 | `contraer(n)` / `contract` | lo aprieta |
 | `expandir(n)` / `expand` | lo expande |
 | `encajar(n)` / `fit` | hace que quepa en n ciclos |
@@ -651,42 +657,42 @@ sonido("bd sd hh cp").zoom(0, 0.5)   # solo la primera mitad del ciclo
 
 ## Dentro de una parte
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `dentro(a, b, f)` / `within` | aplica una funciÃ³n solo entre a y b |
-| `fuera(a, b, f)` / `outside` | aplica una funciÃ³n fuera de ese rango |
+| `dentro(a, b, f)` / `within` | aplica una función solo entre a y b |
+| `fuera(a, b, f)` / `outside` | aplica una función fuera de ese rango |
 | `adentro(f)` / `inside` | aplica f a cada sub-parte |
-| `hacia(f)` / `into` | mete el patrÃ³n dentro de f |
+| `hacia(f)` / `into` | mete el patrón dentro de f |
 | `ritmo(f)` / `pace` | cambia la velocidad localmente |
 
 ```
 func doble(x): x.rapido(2)
-sonido("bd*4").dentro(0, 0.5, "doble")   # la primera mitad va doble rÃ¡pido
+sonido("bd*4").dentro(0, 0.5, "doble")   # la primera mitad va doble rápido
 ```
 
 ---
 
-## RepeticiÃ³n y capas
+## Repetición y capas
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `repetirCiclos(n)` / `repeatCycles` | repite el patrÃ³n n ciclos |
-| `capas(f1, f2, â€¦)` / `layer` | aplica varias funciones y las apila |
-| `superponer(f1, f2, â€¦)` / `superimpose` | original + versiones encima |
+| `repetirCiclos(n)` / `repeatCycles` | repite el patrón n ciclos |
+| `capas(f1, f2, …)` / `layer` | aplica varias funciones y las apila |
+| `superponer(f1, f2, …)` / `superimpose` | original + versiones encima |
 | `golpear(n)` / `ply` | n golpes por nota |
 | `golpearCon(n, f)` / `plyWith` | n golpes procesados por f |
 | `prensar(n)` / `press` | comprime n en uno |
 
 ```
 func agudo(x): x.transponer(12)
-sonido("bd").capas("agudo")         # el bd original + una versiÃ³n 1 octava arriba
+sonido("bd").capas("agudo")         # el bd original + una versión 1 octava arriba
 ```
 
 ---
 
 ## Swing y groove
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
 | `swing(n)` / `swing` | desfase ritmico (groove) |
 | `swingBy(n, f)` | swing solo donde f diga |
@@ -699,20 +705,20 @@ sonido("bd*8").swing(0.25)
 
 ## Trocear (chunk)
 
-Divide el ciclo en n pedazos y aplica una funciÃ³n a cada uno:
+Divide el ciclo en n pedazos y aplica una función a cada uno:
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
-| `trozo(n, f)` / `chunk` | aplica f al trozo n-Ã©simo |
+| `trozo(n, f)` / `chunk` | aplica f al trozo n-ésimo |
 | `trozoLento(n, f)` / `slowChunk` | igual pero lento |
-| `trozoRapido(n, f)` / `fastChunk` | igual pero rÃ¡pido |
+| `trozoRapido(n, f)` / `fastChunk` | igual pero rápido |
 | `trozoEn(n, f)` / `chunkInto` | reparte el ciclo en n y mete f |
 
 ---
 
 ## Ancla y recorrido
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
 | `ancla(n, f)` / `anchor` | ancla el inicio y aplica f |
 | `fancla` / `fanchor` | ancla y espeja |
@@ -723,7 +729,7 @@ Divide el ciclo en n pedazos y aplica una funciÃ³n a cada uno:
 
 ## Espacio y fuerza
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
 | `crecer(n)` / `grow` | crece progresivamente |
 | `apurar(n)` / `hurry` | acelera |
@@ -732,33 +738,33 @@ Divide el ciclo en n pedazos y aplica una funciÃ³n a cada uno:
 | `linger` | alarga el final |
 | `tomar(n)` / `take` | toma n eventos |
 | `esparcir(n)` / `spread` | esparce en n |
-| `exprimir(f)` / `squeeze` | exprime segÃºn otro patrÃ³n |
+| `exprimir(f)` / `squeeze` | exprime según otro patrón |
 | `como(n)` / `as` | convierte el valor a otro tipo |
-| `comoNumero()` / `asNumber` | fuerza a nÃºmero |
+| `comoNumero()` / `asNumber` | fuerza a número |
 
 ---
 
-## Ritmos (EuclÃ­deos y mÃ¡s)
+## Ritmos (Euclídeos y más)
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
 | `euclid(pasos, golpes, rot)` | reparte golpes en pasos |
-| `euclidRot(â€¦)` | con rotaciÃ³n |
-| `euclidLegato(â€¦)` | con notas sostenidas |
-| `euclidish(grupos, golpes)` | grupos de distinto tamaÃ±o |
+| `euclidRot(…)` | con rotación |
+| `euclidLegato(…)` | con notas sostenidas |
+| `euclidish(grupos, golpes)` | grupos de distinto tamaño |
 
 ```
 sonido("bd").euclid(8, 3, 0)    # 3 golpes en 8: 10010010
 sonido("sd").euclid(8, 5, 0)    # 5 golpes en 8
 ```
 
-TambiÃ©n como funciÃ³n suelta: `euclid(8,3)`, `euclidish([3,2], 5)`.
+También como función suelta: `euclid(8,3)`, `euclidish([3,2], 5)`.
 
 ---
 
 ## Azar y vida
 
-| Mando | QuÃ© hace |
+| Mando | Qué hace |
 |-------|----------|
 | `degradar()` / `degrade` | quita notas al azar (50%) |
 | `degradarPor(p)` / `degradeBy` | quita con probabilidad p |
@@ -774,7 +780,7 @@ TambiÃ©n como funciÃ³n suelta: `euclid(8,3)`, `euclidish([3,2], 5)`.
 
 ```
 func doble(x): x.rapido(2)
-sonido("bd*4").a veces("doble")   # a veces va doble rÃ¡pido
+sonido("bd*4").a veces("doble")   # a veces va doble rápido
 sonido("bd*8").cada(4, "doble")   # cada 4 ciclos va doble
 ```
 
@@ -782,17 +788,17 @@ sonido("bd*8").cada(4, "doble")   # cada 4 ciclos va doble
 
 ---
 
-## SelecciÃ³n aleatoria
+## Selección aleatoria
 
-| FunciÃ³n suelta | QuÃ© hace |
+| Función suelta | Qué hace |
 |----------------|----------|
 | `elegir(a, b, c)` / `choose` | elige uno al azar |
-| `elegirCiclos(â€¦)` / `chooseCycles` | elige uno por ciclo |
+| `elegirCiclos(…)` / `chooseCycles` | elige uno por ciclo |
 | `elegirPesos([p, a], [q, b])` / `wchoose` | elige con pesos |
-| `corrido(n)` / `run` | cuenta del 0 a nâˆ’1 |
-| `irand(n)` | entero al azar 0..nâˆ’1 |
-| `rand2()` | nÃºmero al azar âˆ’1..1 |
-| `randL()` | al azar 0..1 (logarÃ­tmico) |
+| `corrido(n)` / `run` | cuenta del 0 a n−1 |
+| `irand(n)` | entero al azar 0..n−1 |
+| `rand2()` | número al azar −1..1 |
+| `randL()` | al azar 0..1 (logarítmico) |
 | `rangoX(a, b)` / `rangex` | rango exponencial |
 
 ```
@@ -802,10 +808,11 @@ nota(corrido(8)).escala("mayor")      # escala ascendente
 
 
 ===== 06-combinar-y-vivir.md =====
+
 # Combinar patrones y darles vida
 
-AquÃ­ aprendes a juntar varias ideas para que suenen a la vez, y a hacer que la
-mÃºsica "respire" y cambie sola.
+Aquí aprendes a juntar varias ideas para que suenen a la vez, y a hacer que la
+música "respire" y cambie sola.
 
 ---
 
@@ -813,7 +820,7 @@ mÃºsica "respire" y cambie sola.
 
 ### pila (stack)
 
-La forma mÃ¡s simple: pones varios patrones juntos y suenan al mismo tiempo.
+La forma más simple: pones varios patrones juntos y suenan al mismo tiempo.
 
 ```
 bateria = sonido("bd sd hh cp")
@@ -823,11 +830,11 @@ melodia = nota("do5 mi5 sol5")
 pila(bateria, bajo, melodia).out()
 ```
 
-Todo suena junto. Cada patrÃ³n conserva su propio ritmo.
+Todo suena junto. Cada patrón conserva su propio ritmo.
 
 ### secuencia (cat / fastcat)
 
-Toca unos despuÃ©s de otros, dentro del ciclo:
+Toca unos después de otros, dentro del ciclo:
 
 ```
 secuencia(sonido("bd"), sonido("sd"), sonido("hh"))
@@ -835,13 +842,13 @@ secuencia(sonido("bd"), sonido("sd"), sonido("hh"))
 
 ### secuenciaLenta (slowcat)
 
-Cada patrÃ³n ocupa un ciclo entero, uno tras otro:
+Cada patrón ocupa un ciclo entero, uno tras otro:
 
 ```
 secuenciaLenta(sonido("bd*4"), sonido("hh*8"))
 ```
 
-### polÃ­metro / polirritmia / timecat
+### polímetro / polirritmia / timecat
 
 Para cruzar ritmos de distinta longitud (avanzado). Ejemplo:
 
@@ -860,19 +867,19 @@ puedes transformar una de ellas:
 sonido("bd*4 hh*4").jux(func(x): x.rapido(2))
 ```
 
-Esto pone el ritmo normal a la izquierda y el doble de rÃ¡pido a la derecha.
+Esto pone el ritmo normal a la izquierda y el doble de rápido a la derecha.
 
-Variantes: `juxBy(pan, f)` (cantidad de separaciÃ³n), `juxFlip(f)`, `juxFlipBy(pan, f)`.
+Variantes: `juxBy(pan, f)` (cantidad de separación), `juxFlip(f)`, `juxFlipBy(pan, f)`.
 
 ---
 
-## Capas y superposiciÃ³n
+## Capas y superposición
 
-Ya viste `capas` y `superponer` en el doc anterior. Recordatorio rÃ¡pido:
+Ya viste `capas` y `superponer` en el doc anterior. Recordatorio rápido:
 
 ```
 func oct(x): x.transponer(12)
-sonido("do3 mi3 sol3").capas("oct")        # melodÃ­a + 1 octava arriba
+sonido("do3 mi3 sol3").capas("oct")        # melodía + 1 octava arriba
 sonido("bd").superponer("oct")             # bd + bd agudo
 ```
 
@@ -880,7 +887,7 @@ sonido("bd").superponer("oct")             # bd + bd agudo
 
 ## Hacer que cambie solo (aleatorio)
 
-Esto es lo que hace que Codic suene "vivo", como un mÃºsico improvisando:
+Esto es lo que hace que Codic suene "vivo", como un músico improvisando:
 
 ```
 func Doble(x): x.rapido(2)
@@ -889,16 +896,16 @@ base = sonido("bd*4 hh*8")
 base.a veces("Doble").out()        # a veces el beat se acelera
 ```
 
-Otras palabras mÃ¡gicas: `a menudo`, `rara vez`, `casi siempre`, `casi nunca`,
+Otras palabras mágicas: `a menudo`, `rara vez`, `casi siempre`, `casi nunca`,
 `cada(n, f)`, `algunosCiclos(f)`.
 
-Todas reciben el nombre de una funciÃ³n **entre comillas**.
+Todas reciben el nombre de una función **entre comillas**.
 
 ---
 
 ## inside / dentro / fuera
 
-Aplicas una transformaciÃ³n solo a una porciÃ³n del tiempo:
+Aplicas una transformación solo a una porción del tiempo:
 
 ```
 func eco(x): x.delay(0.3)
@@ -910,7 +917,7 @@ sonido("bd*4").dentro(0, 0.5, "eco")   # eco solo en la primera mitad
 ## Ejemplo "vivo" completo
 
 ```
-# BaterÃ­a que a veces se acelera
+# Batería que a veces se acelera
 func Rapido(x): x.rapido(2)
 bateria = sonido("bd sd hh cp").volumen(0.7)
 bateria.a menudo("Rapido").out()
@@ -919,7 +926,7 @@ bateria.a menudo("Rapido").out()
 bajo = nota(elegir("do2", "re2", "mi2", "sol2")).volumen(0.5)
 bajo.out()
 
-# MelodÃ­a con paneo automÃ¡tico
+# Melodía con paneo automático
 melodia = nota("do5 re5 mi5 sol5").volumen(0.35).lfo("pan", 1, 0.5)
 melodia.out()
 ```
@@ -929,34 +936,35 @@ pero cada uno tiene su propia vida.
 
 
 ===== 07-albumes-stems-exportar.md =====
-# Ãlbumes, stems de terceros y exportar
 
-Hasta ahora componÃ­as una idea y la hacÃ­as sonar. Codic tambiÃ©n puede armar un
-**Ã¡lbum** (una canciÃ³n con varias pistas) y **exportarlo** a un programa de
-mÃºsica profesional mediante el formato abierto **DAWproject**.
+# Álbumes, stems de terceros y exportar
 
-Esto sirve para: seguir retocando tu canciÃ³n en Bitwig, Reaper, Ableton, etc.;
+Hasta ahora componías una idea y la hacías sonar. Codic también puede armar un
+**álbum** (una canción con varias pistas) y **exportarlo** a un programa de
+música profesional mediante el formato abierto **DAWproject**.
+
+Esto sirve para: seguir retocando tu canción en Bitwig, Reaper, Ableton, etc.;
 mezclar con stems (pistas de audio) que bajaste de internet; o entregar tu
-trabajo a otro mÃºsico.
+trabajo a otro músico.
 
 ---
 
-## El Ã¡lbum
+## El álbum
 
-Empiezas nombrando tu Ã¡lbum/canciÃ³n:
+Empiezas nombrando tu álbum/canción:
 
 ```
 album("Mi Primer Album")
 ```
 
-Eso es el tÃ­tulo que llevarÃ¡ el archivo exportado.
+Eso es el título que llevará el archivo exportado.
 
 ---
 
 ## Stems de terceros
 
-Un **stem** es un archivo de audio (`.wav`, `.mp3`) que ya tienes: una baterÃ­a
-que descargaste, una voz grabada, un loop de alguien mÃ¡s. Lo agregas asÃ­:
+Un **stem** es un archivo de audio (`.wav`, `.mp3`) que ya tienes: una batería
+que descargaste, una voz grabada, un loop de alguien más. Lo agregas así:
 
 ```
 stem("bateria", "stems/bateria.wav")            # ruta al archivo
@@ -965,7 +973,7 @@ stem("bajo", "stems/bajo.wav", 0.8, -0.3)       # volumen 0.8 y paneo a la izqui
 ```
 
 El primer texto es el **nombre** de la pista (para ti). El segundo es la
-**ruta** al archivo en tu computadora. Los nÃºmeros opcionales son volumen y
+**ruta** al archivo en tu computadora. Los números opcionales son volumen y
 paneo.
 
 > Consejo: pon tus archivos de audio en una carpeta `stems/` junto a tu
@@ -975,25 +983,25 @@ paneo.
 
 ## Pistas desde tus patrones
 
-AdemÃ¡s de stems, puedes convertir cualquier patrÃ³n de Codic en una pista del
-Ã¡lbum:
+Además de stems, puedes convertir cualquier patrón de Codic en una pista del
+álbum:
 
 ```
 track("bajo", nota("do2 re2 mi2 sol2").volumen(0.5))
 track("lead", sonido("bd*4").nota(36), 0.7)     # volumen 0.7
 ```
 
-El primer texto es el nombre; el segundo es tu patrÃ³n (lo que ya sabes hacer).
+El primer texto es el nombre; el segundo es tu patrón (lo que ya sabes hacer).
 Opcionalmente, volumen y paneo.
 
 Al exportar, los patrones se convierten en **notas MIDI** (si son notas) o se
-guardan como la informaciÃ³n necesaria para que el DAW las reproduzca.
+guardan como la información necesaria para que el DAW las reproduzca.
 
 ---
 
 ## Exportar a DAWproject
 
-Cuando ya tienes tu Ã¡lbum armado, lo escribes a un archivo:
+Cuando ya tienes tu álbum armado, lo escribes a un archivo:
 
 ```
 export("mi_album.dawproject")
@@ -1006,10 +1014,10 @@ export_dawproject("mi_album.dawproject")
 ```
 
 Eso crea un archivo `.dawproject` (formato abierto, compatible con Bitwig,
-Reaper y otros). Ãbrelo en tu DAW y ahÃ­ tendrÃ¡s tus pistas: los stems como
+Reaper y otros). Ábrelo en tu DAW y ahí tendrás tus pistas: los stems como
 audio, y tus patrones como clips de notas.
 
-Si no pones nombre de archivo, Codic usa el nombre del Ã¡lbum:
+Si no pones nombre de archivo, Codic usa el nombre del álbum:
 
 ```
 album("Mi Album Cool")
@@ -1021,19 +1029,19 @@ export()                  # crea "mi_album_cool.dawproject"
 
 ## Desde la terminal (sin abrir el script)
 
-TambiÃ©n puedes exportar un archivo `.cdc` directamente:
+También puedes exportar un archivo `.cdc` directamente:
 
 ```
 codic export cancion.cdc
 codic export cancion.cdc salida.dawproject
 ```
 
-Codic lee el archivo, arma el Ã¡lbum y escribe el `.dawproject`. No suena nada;
+Codic lee el archivo, arma el álbum y escribe el `.dawproject`. No suena nada;
 solo guarda el archivo.
 
 ---
 
-## Ejemplo completo de Ã¡lbum
+## Ejemplo completo de álbum
 
 Archivo `album.cdc`:
 
@@ -1041,13 +1049,13 @@ Archivo `album.cdc`:
 album("Cancion de Prueba")
 bpm(110)
 
-# Pista de baterÃ­a que bajÃ© de internet
+# Pista de batería que bajé de internet
 stem("bateria", "stems/bateria.wav", 0.9)
 
 # Mi bajo en Codang
 track("bajo", nota("do2 re2 mi2 sol2").volumen(0.6))
 
-# Mi melodÃ­a
+# Mi melodía
 func Oct(x): x.transponer(12)
 track("lead", nota("do5 mi5 sol5").volumen(0.4).capas("Oct"))
 
@@ -1062,24 +1070,25 @@ abrir en tu DAW.
 
 ## Resumen de las funciones nuevas
 
-| FunciÃ³n | QuÃ© hace |
+| Función | Qué hace |
 |---------|----------|
-| `album("nombre")` | tÃ­tulo del Ã¡lbum/proyecto |
+| `album("nombre")` | título del álbum/proyecto |
 | `bpm(n)` | tempo (latidos por minuto) |
 | `stem("nombre", "ruta", volumen?, pan?)` | pista de audio de terceros |
-| `track("nombre", patron, volumen?, pan?)` | pista desde un patrÃ³n de Codic |
-| `export("archivo.dawproject")` | exporta el Ã¡lbum |
+| `track("nombre", patron, volumen?, pan?)` | pista desde un patrón de Codic |
+| `export("archivo.dawproject")` | exporta el álbum |
 | `export_dawproject("archivo.dawproject")` | igual que `export` |
 
 
 ===== 08-recetas-ejemplos.md =====
+
 # Recetas y ejemplos listos
 
 Copia, pega y cambia lo que quieras. Cada bloque es un archivo `.cdc` completo.
 
 ---
 
-## Beat de baterÃ­a bÃ¡sico
+## Beat de batería básico
 
 ```
 sonido("bd sd hh cp").volumen(0.8).out()
@@ -1091,20 +1100,20 @@ sonido("bd sd hh cp").volumen(0.8).out()
 sonido("bd*4 [sd hh] hh*2").swing(0.25).volumen(0.8).out()
 ```
 
-## Hi-hats rÃ¡pidos con filtro
+## Hi-hats rápidos con filtro
 
 ```
 sonido("hh*16").filtro(9000).resonancia(0.3).volumen(0.4).out()
 ```
 
-## Bombo con ritmo euclÃ­deo
+## Bombo con ritmo euclídeo
 
 ```
 sonido("bd").euclid(8, 3, 0).volumen(0.9).out()
 sonido("sd").euclid(8, 5, 0).volumen(0.7).out()
 ```
 
-## MelodÃ­a suave con sintetizador
+## Melodía suave con sintetizador
 
 ```
 nota("do5 re5 mi5 sol5 do6").sintetizador("sierra").volumen(0.4).out()
@@ -1116,7 +1125,7 @@ nota("do5 re5 mi5 sol5 do6").sintetizador("sierra").volumen(0.4).out()
 nota(corrido(8)).escala("mayor").volumen(0.5).out()
 ```
 
-## Bajo con paneo automÃ¡tico
+## Bajo con paneo automático
 
 ```
 nota("do2 re2 mi2 sol2").volumen(0.6).lfo("pan", 0.5, 0.8).out()
@@ -1131,7 +1140,7 @@ pila(
 ).out()
 ```
 
-## CanciÃ³n que cambia sola
+## Canción que cambia sola
 
 ```
 func Doble(x): x.rapido(2)
@@ -1155,13 +1164,13 @@ sonido("hh*4").room(0.8).delay(0.4).delayfeedback(0.5).volumen(0.3).out()
 sonido("cp*4").vocal("a").volumen(0.6).out()
 ```
 
-## Beat con distorsiÃ³n
+## Beat con distorsión
 
 ```
 sonido("bd sd").distorsion(0.3).volumen(0.8).out()
 ```
 
-## CanciÃ³n completa para exportar
+## Canción completa para exportar
 
 ```
 album("Mi Cancion")
@@ -1178,58 +1187,113 @@ export("mi_cancion.dawproject")
 
 ## Consejos para empezar
 
-1. Empieza solo con `sonido("bd sd hh cp").out()` y escÃºchalo.
+1. Empieza solo con `sonido("bd sd hh cp").out()` y escúchalo.
 2. Agrega un `.volumen(0.8)` y luego un `.room(0.3)`.
-3. Cambia los nombres: `bd`, `sd`, `hh`, `cp`, `oh`, `cy`â€¦
+3. Cambia los nombres: `bd`, `sd`, `hh`, `cp`, `oh`, `cy`…
 4. Prueba `rapido(2)`, `revertir()`, `swing(0.25)`.
-5. Cuando suene bien, envuÃ©lvelo en `pila(...)` con una melodÃ­a.
-6. Por Ãºltimo, haz un `album(...)` + `export(...)` para llevÃ¡rtelo a tu DAW.
+5. Cuando suene bien, envuélvelo en `pila(...)` con una melodía.
+6. Por último, haz un `album(...)` + `export(...)` para llevártelo a tu DAW.
 
-No hay forma de "romper" nada: si suena raro, cambia un nÃºmero y vuelve a
+No hay forma de "romper" nada: si suena raro, cambia un número y vuelve a
 intentar.
 
 
 ===== 09-referencia-completa.md =====
+
 # Referencia completa de Codang
 
-Esta es la lista de todo lo que existe en el lenguaje. Si ya sabes lo bÃ¡sico,
-esto es el "diccionario". Los mÃ©todos se aplican con punto (`.`) despuÃ©s de un
-patrÃ³n; las funciones sueltas se escriben solas o entre parÃ©ntesis.
+Esta es la lista de todo lo que existe en el lenguaje. Si ya sabes lo básico,
+esto es el "diccionario". Los métodos se aplican con punto (`.`) después de un
+patrón; las funciones sueltas se escriben solas o entre paréntesis.
+
+---
+
+## Tipos de canción (obligatorio: `@type`)
+
+Toda canción **empieza declarando su tipo** con `@type`. El tipo fija cuánta
+complejidad exige Codang: no puedes declarar una `full-prod-song` y entregar un
+loop suelto de 4 golpes. Si el `.cdc` produce audio (`.out()`) y no declara
+`@type`, el render se rechaza. Consulta los 10 tipos con `codic lang types`.
+
+| Tipo | Ciclos mín. | Capas mín. | Secciones mín. | Título | Arreglo |
+|------|:-----------:|:----------:|:--------------:|:------:|:-------:|
+| `mini-loop` | 2 | 1 | 0 | no | no |
+| `loop` | 8 | 2 | 0 | no | no |
+| `riff` | 16 | 3 | 1 | no | no |
+| `groove` | 24 | 4 | 2 | no | sí |
+| `beat` | 32 | 5 | 3 | sí | sí |
+| `sketch` | 40 | 5 | 3 | sí | sí |
+| `track` | 48 | 6 | 4 | sí | sí |
+| `song` | 64 | 7 | 5 | sí | sí |
+| `epic` | 96 | 8 | 6 | sí | sí |
+| `full-prod-song` | 128 | 8 | 7 | sí | sí |
+
+- **Capas** = cada `.out()` (batería, bajo, armonía, melodía, percusión, fx…).
+- **Secciones** = cada `section("nombre", patron)` (intro, verse, chorus, bridge…).
+- **Arreglo** = unir las secciones con `cat(...)`/`seq(...)` y sacarlas con `.out()`.
+- Cada tipo **sugiere** sus secciones típicas (intro, verse, pre-chorus, chorus,
+  bridge, breakdown, outro). No son obligatorias, pero es la estructura que usa
+  la mayoría; si faltan, Codang lo **avisa** (no bloquea).
+
+### Cabecera de una canción
+
+```
+@type full-prod-song
+@title "Mi Temazo"
+@cycles 128          # duración en ciclos (define lo que dura el render)
+@bpm 120             # o @cps 0.5 (ciclos por segundo)
+
+section("intro",  s("bd ~ ~ ~"))
+section("verse",  s("bd sd"))
+section("chorus", s("bd*2 sd"))
+# … resto de secciones …
+
+cat(s("intro"), s("verse"), s("chorus")).out()   # arreglo
+s("bd*4").out()                                   # capas
+note("c2 e2 g2").out()
+```
+
+La **duración** del render sale de `@cycles` y el tempo (`@cps`, o `@bpm/240`).
+Con `@cycles 128` y `@bpm 120` → 128 / 0.5 = 256 s. La bandera `-d` la sobreescribe.
 
 ---
 
 ## Fuentes de sonido (crean patrones)
 
-| Nombre | QuÃ© devuelve |
+| Nombre | Qué devuelve |
 |--------|--------------|
-| `sonido("â€¦")` / `s("â€¦")` | patrÃ³n de samples (baterÃ­a, etc.) |
-| `nota(â€¦)` / `n(â€¦)` | patrÃ³n de notas (nÃºmero o nombre como `"do3"`) |
-| `frecuencia(hz)` / `freq` | patrÃ³n a una frecuencia en Hz |
-| `seno` / `coseno` / `sierra` / `isaw` / `triangulo` / `cuadrada` | ondas (seÃ±ales) |
-| `aleatorio` / `rand` | valor al azar (seÃ±al) |
-| `silencio()` | patrÃ³n vacÃ­o |
+| `sonido("…")` / `s("…")` | patrón de samples (batería, etc.) |
+| `nota(…)` / `n(…)` | patrón de notas (número o nombre como `"do3"`) |
+| `frecuencia(hz)` / `freq` | patrón a una frecuencia en Hz |
+| `seno` / `coseno` / `sierra` / `isaw` / `triangulo` / `cuadrada` | ondas (señales) |
+| `aleatorio` / `rand` | valor al azar (señal) |
+| `silencio()` | patrón vacío |
 
-## ConstrucciÃ³n de patrones
+## Construcción de patrones
 
-`pila(a,b,â€¦)`, `secuencia(a,b,â€¦)` / `cat`, `secuenciaRapida` / `fastcat`,
+`pila(a,b,…)`, `secuencia(a,b,…)` / `cat`, `secuenciaRapida` / `fastcat`,
 `secuenciaLenta` / `slowcat`, `polimetro`, `polirritmia`, `timecat`,
 `secuencia` / `seq`, `silencio()`.
 
-## Mini-notaciÃ³n (dentro de `"â€¦"`)
+`section("nombre", patron)` — nombra una parte de la canción (intro, verse,
+chorus…). Cuenta como sección para el `@type` y devuelve el patrón para poder
+unirlo en el arreglo con `cat(...)`.
 
-espacio = orden Â· `,` = a la vez Â· `[ ]` = grupo Â· `{ }` = polÃ­metro (`%n`) Â·
-`< >` = alternar Â· `*` = repetir Â· `/` = alargar Â· `?` = azar 50% Â·
-`:n` = nota n Â· `(n,m,s)` = euclÃ­deo Â· `~` = silencio.
+## Mini-notación (dentro de `"…"`)
+
+espacio = orden · `,` = a la vez · `[ ]` = grupo · `{ }` = polímetro (`%n`) ·
+`< >` = alternar · `*` = repetir · `/` = alargar · `?` = azar 50% ·
+`:n` = nota n · `(n,m,s)` = euclídeo · `~` = silencio.
 
 ---
 
-## Transformaciones (mÃ©todos)
+## Transformaciones (métodos)
 
 **Tiempo:** `rapido(n)` `lento(n)` `adelantar(n)` `atrasar(n)` `iter(n)` `iterBack(n)`
 **Orden:** `revertir()` `palindromo()` `brak()` `mezclar()` `scramble()` `shuffle()`
 **Recorte:** `zoom(a,b)` `estirar(n)` `contraer(n)` `expandir(n)` `encajar(n)` `doblar(n)` `encoger(n)`
 **Dentro:** `dentro(a,b,f)` `fuera(a,b,f)` `adentro(f)` `hacia(f)` `ritmo(f)` `off(f)` `offspray(f)`
-**Capas:** `capas(fâ€¦)` `superponer(fâ€¦)` `golpear(n)` `golpearCon(n,f)` `golpearPorCada(n,f)` `prensar(n)`
+**Capas:** `capas(f…)` `superponer(f…)` `golpear(n)` `golpearCon(n,f)` `golpearPorCada(n,f)` `prensar(n)`
 **Swing:** `swing(n)` `swingBy(n,f)`
 **Trozos:** `trozo(n,f)` `trozoLento(n,f)` `trozoRapido(n,f)` `trozoEn(n,f)` `trozoAtras(n,f)`
 **Ancla:** `ancla(n,f)` `fancla(n,f)` `pancla(n,f)` `recorrido(f)`
@@ -1240,55 +1304,55 @@ espacio = orden Â· `,` = a la vez Â· `[ ]` = grupo Â· `{ }` = polÃ­metro
 
 ---
 
-## ParÃ¡metros de sonido (mÃ©todos)
+## Parámetros de sonido (métodos)
 
 **Mezcla:** `volumen(n)` `paneo(n)` `velocidad(n)` `room(n)` `roomsize(n)` `roomfade(n)` `roomlp(n)` `delay(n)` `delaytime(n)` `delayfeedback(n)` `delaysync(n)` `crush(n)` `ancho_pan(n)`
 **Filtros:** `filtro(n)` `resonancia(n)` `lpf(n)` `hpf(n)` `lpq(n)` `hpq(n)` `bpf(n)` `bpq(n)` `djf(n)` `bandf(n)` `bandq(n)`
-**DistorsiÃ³n/carÃ¡cter:** `distorsion(n)` `dist(n)` `drive(n)` `distorttype(t)` `vib(n)` `vibmod(n)` `vocal(v)` `ribbon(n)` `tremolo(n)` `tremolorate(n)` `tremolodepth(n)` `phaser(n)` `phasercenter(n)` `phaserdepth(n)` `phasersweep(n)` `chorus(n)` `comb(n)`
+**Distorsión/carácter:** `distorsion(n)` `dist(n)` `drive(n)` `distorttype(t)` `vib(n)` `vibmod(n)` `vocal(v)` `ribbon(n)` `tremolo(n)` `tremolorate(n)` `tremolodepth(n)` `phaser(n)` `phasercenter(n)` `phaserdepth(n)` `phasersweep(n)` `chorus(n)` `comb(n)`
 **Env.:** `ataque(n)` `sostenido(n)` `liberacion(n)` `forma(n)` `decay(n)` `adsr(a,s,d,r)`
 **Tono:** `frecuencia(n)` `transponer(n)` `detune(n)` `octava(n)` `subir(n)` `bajar(n)`
 **Sample:** `acelerar(n)` `loop(n)` `loopBegin(n)` `loopEnd(n)` `loopSample(a,b)` `cut(n)` `begin(n)` `end(n)` `speed(n)`
 **Salida:** `orbit(n)` `canal(n)` `canales(n)` `etiqueta(t)` `label(t)` `tag(t)` `color(t)` `brand(t)`
-**LFO:** `lfo("mando", vel, cant)` `lfoSignal(â€¦)`
+**LFO:** `lfo("mando", vel, cant)` `lfoSignal(…)`
 
 ---
 
-## MÃºsica y MIDI
+## Música y MIDI
 
-`escala(nombre, â€¦notas)` Â· `edoScale(div, â€¦)` Â· `scaleTranspose(n)` Â· `modo(t)` Â·
-`afinar(n)` Â· `acorde(nombre, tipo)` Â· `voicing(â€¦)` Â· `addVoicings(â€¦)` Â·
-`arp(tipo)` Â· `arpWith(f)` Â· `partial(n)` Â· `midinote(n)` Â· `midichan(n)` Â·
-`midicmd(t)` Â· `ccn(n)` Â· `ccv(n)` Â· `control(â€¦)` Â· `sysex(â€¦)` Â· `progNum(n)` Â·
-`pitchwheel(n)` Â· `nrpnn(n)` Â· `nrpv(n)` Â· `fm(â€¦)` `fmi` `fmh` `fmw` `fmattack` â€¦ Â·
-`wtâ€¦` (wavetable) Â· `lpattac`/`hpatâ€¦`/`bpatâ€¦` (envolventes de filtro) Â·
+`escala(nombre, …notas)` · `edoScale(div, …)` · `scaleTranspose(n)` · `modo(t)` ·
+`afinar(n)` · `acorde(nombre, tipo)` · `voicing(…)` · `addVoicings(…)` ·
+`arp(tipo)` · `arpWith(f)` · `partial(n)` · `midinote(n)` · `midichan(n)` ·
+`midicmd(t)` · `ccn(n)` · `ccv(n)` · `control(…)` · `sysex(…)` · `progNum(n)` ·
+`pitchwheel(n)` · `nrpnn(n)` · `nrpv(n)` · `fm(…)` `fmi` `fmh` `fmw` `fmattack` … ·
+`wt…` (wavetable) · `lpattac`/`hpat…`/`bpat…` (envolventes de filtro) ·
 `toMidi()` `fromMidi()`.
 
 ---
 
-## GeneraciÃ³n y azar (funciones sueltas y mÃ©todos)
+## Generación y azar (funciones sueltas y métodos)
 
-Funciones sueltas: `elegir(â€¦)` `choose` Â· `elegirCiclos(â€¦)` `chooseCycles` Â·
-`elegirPesos(â€¦)` `wchoose` Â· `randcat` Â· `corrido(n)` `run` Â· `irand(n)` Â·
-`rand2()` Â· `randL()` Â· `rangoX(a,b)` `rangex` Â· `escala(â€¦)` `scale` Â·
-`acorde(â€¦)` `chord` Â· `edoScale` Â· `palindromo()` `palindrome` Â· `brak()` Â·
-`mezclar()` Â· `euclid(p,g,r)` Â· `euclidish(â€¦)` Â· `espiral(esc, pasos, salto, raiz)` `spiral` Â·
-`secuenciaP(â€¦)` `seqPLoop` Â· `stepcat(â€¦)` Â· `step(â€¦)` Â· `stepwise(â€¦)`.
+Funciones sueltas: `elegir(…)` `choose` · `elegirCiclos(…)` `chooseCycles` ·
+`elegirPesos(…)` `wchoose` · `randcat` · `corrido(n)` `run` · `irand(n)` ·
+`rand2()` · `randL()` · `rangoX(a,b)` `rangex` · `escala(…)` `scale` ·
+`acorde(…)` `chord` · `edoScale` · `palindromo()` `palindrome` · `brak()` ·
+`mezclar()` · `euclid(p,g,r)` · `euclidish(…)` · `espiral(esc, pasos, salto, raiz)` `spiral` ·
+`secuenciaP(…)` `seqPLoop` · `stepcat(…)` · `step(…)` · `stepwise(…)`.
 
-MÃ©todos de "vida": `degradar()` `degrade` Â· `degradarPor(p)` `degradeBy` Â·
-`a veces(f)` `sometimes` Â· `a menudo(f)` `often` Â· `rara vez(f)` `rarely` Â·
-`casi siempre(f)` `almostAlways` Â· `casi nunca(f)` `almostNever` Â· `siempre(f)` `always` Â·
-`nunca(f)` `never` Â· `algunosCiclos(f)` `someCycles` Â· `algunosCiclosPor(p,f)` `someCyclesBy` Â·
-`cada(n,f)` `every` Â· `dentro(â€¦)` Â· `fuera(â€¦)` Â· `unison(n)` Â· `comprimir(a,b)` Â·
-`zip(a,b)` Â· `xfade(a,b,t)` `crossfade` Â· `inhabitar(f)` `inhabit` Â· `defragmentHaps()`.
+Métodos de "vida": `degradar()` `degrade` · `degradarPor(p)` `degradeBy` ·
+`a veces(f)` `sometimes` · `a menudo(f)` `often` · `rara vez(f)` `rarely` ·
+`casi siempre(f)` `almostAlways` · `casi nunca(f)` `almostNever` · `siempre(f)` `always` ·
+`nunca(f)` `never` · `algunosCiclos(f)` `someCycles` · `algunosCiclosPor(p,f)` `someCyclesBy` ·
+`cada(n,f)` `every` · `dentro(…)` · `fuera(…)` · `unison(n)` · `comprimir(a,b)` ·
+`zip(a,b)` · `xfade(a,b,t)` `crossfade` · `inhabitar(f)` `inhabit` · `defragmentHaps()`.
 
-Stems/sample: `striate(n)` `stripe(n)` `chop(n)` `slice(n)` `bite(a,b,n)` `splice(n)` Â· `gap(n)` Â· `reset()` `restart()`.
+Stems/sample: `striate(n)` `stripe(n)` `chop(n)` `slice(n)` `bite(a,b,n)` `splice(n)` · `gap(n)` · `reset()` `restart()`.
 
 ---
 
-## Ãlbum y exportaciÃ³n
+## Álbum y exportación
 
-`album("nombre")` Â· `bpm(n)` Â· `stem("nombre","ruta",vol?,pan?)` Â·
-`track("nombre", patron, vol?, pan?)` Â· `export("archivo.dawproject")` Â·
+`album("nombre")` · `bpm(n)` · `stem("nombre","ruta",vol?,pan?)` ·
+`track("nombre", patron, vol?, pan?)` · `export("archivo.dawproject")` ·
 `export_dawproject("archivo.dawproject")`.
 
 Desde terminal: `codic export archivo.cdc [salida.dawproject]`.
@@ -1299,36 +1363,41 @@ Desde terminal: `codic export archivo.cdc [salida.dawproject]`.
 
 ```
 codic demo                                   # suena una demo
-codic eval "sonido(\"bd sd\").out()"         # evalÃºa cÃ³digo
+codic eval "sonido(\"bd sd\").out()"         # evalúa código
 codic file cancion.cdc                       # reproduce un archivo
 codic export cancion.cdc salida.dawproject   # exporta sin sonar
+codic lang types                             # los 10 tipos de canción
+codic lang lint cancion.cdc                  # valida tipo, capas, secciones…
 ```
 
 ---
 
 ## Notas importantes
 
-- Siempre termina la idea que quieres oÃ­r con `.out()`.
-- Los nombres de funciÃ³n se pasan **entre comillas** a los mÃ©todos de azar:
+- Empieza toda canción declarando `@type` (ver "Tipos de canción"); Codang
+  exige la complejidad del tipo elegido y rechaza el render si no se cumple.
+- Siempre termina la idea que quieres oír con `.out()`.
+- Los nombres de función se pasan **entre comillas** a los métodos de azar:
   `sonido("bd").a veces("MiFunc")`.
-- Los nÃºmeros de volumen/paneo van de 0 a 1; el paneo de âˆ’1 (izq) a +1 (der).
-- Todo vive en un ciclo que se repite para siempre; tÃº decides quÃ© pasa en Ã©l.
+- Los números de volumen/paneo van de 0 a 1; el paneo de −1 (izq) a +1 (der).
+- Todo vive en un ciclo que se repite para siempre; tú decides qué pasa en él.
 
 
 ===== 10-catalogo-sonidos.md =====
-# 10 Â· CatÃ¡logo completo de sonidos ðŸŽ›ï¸
+
+# 10 · Catálogo completo de sonidos 🎛️
 
 Esta es **toda** la lista de lo que puedes usar en Codic para hacer ruido.
 Dividido en 4 familias:
 
-1. **Sintetizadores** (ondas generadas por cÃ³digo, siempre disponibles)
-2. **BaterÃ­a sintetizada** (bombo, caja, hi-hatâ€¦ hechos en cÃ³digo)
+1. **Sintetizadores** (ondas generadas por código, siempre disponibles)
+2. **Batería sintetizada** (bombo, caja, hi-hat… hechos en código)
 3. **Samples de Dirt-Samples** (archivos de audio reales, 218 nombres)
-4. **Notas musicales** (para melodÃ­as)
+4. **Notas musicales** (para melodías)
 
 ---
 
-## 1 Â· Sintetizadores (ondas)
+## 1 · Sintetizadores (ondas)
 
 Se usan con `.sintetizador("...")` o `.sonido("...")`. Codic genera la onda en
 vivo. Funcionan con `nota(...)` para darles tono:
@@ -1341,19 +1410,19 @@ nota("la2").sonido("seno").gain(0.4).out()
 | Nombre | Alias | Tipo de onda |
 |--------|-------|--------------|
 | `sine` | `seno` | Senoidal (suave, pura) |
-| `sawtooth` | `saw`, `sierra` | Sierra (rÃ­tmica, Ã¡spera) |
+| `sawtooth` | `saw`, `sierra` | Sierra (rítmica, áspera) |
 | `square` | `cuadrada` | Cuadrada (8-bit, vidriosa) |
 | `triangle` | `tri`, `triangulo` | Triangular (entre seno y sierra) |
 | `noise` | `ruido` | Ruido blanco |
 | `cosine` | `coseno` | Coseno (igual que seno, desfasada) |
-| `rand` | â€” | Ruido aleatorio (suena como `ruido`) |
-| `isaw` | â€” | Sierra invertida |
+| `rand` | — | Ruido aleatorio (suena como `ruido`) |
+| `isaw` | — | Sierra invertida |
 
 > Consejo: combina con `cutoff(800)` para un filtro, o `distort(0.3)` para suciedad.
 
 ---
 
-## 2 Â· BaterÃ­a sintetizada (siempre disponible)
+## 2 · Batería sintetizada (siempre disponible)
 
 Estos no necesitan archivos: Codic los fabrica. Usa `sonido("...")`:
 
@@ -1362,98 +1431,98 @@ sonido("bd sd hh cp").out()          # bombo caja hihat palmas
 sonido("bd").gain(0.9).out()
 ```
 
-| Nombre | TambiÃ©n como | Sonido |
+| Nombre | También como | Sonido |
 |--------|--------------|--------|
 | `bd` | `kick`, `bt` | Bombo / kick |
 | `sd` | `snare`, `sn` | Caja / snare |
 | `hh` | `hihat`, `ch` | Hi-hat cerrado |
-| `oh` | â€” | Hi-hat abierto |
+| `oh` | — | Hi-hat abierto |
 | `cp` | `clap` | Palmas / clap |
 
-Para aÃºn mÃ¡s baterÃ­as reales, usa los samples de abajo (`808bd`, `909sd`, etc.).
+Para aún más baterías reales, usa los samples de abajo (`808bd`, `909sd`, etc.).
 
 ---
 
-## 3 Â· Samples de Dirt-Samples (218 nombres)
+## 3 · Samples de Dirt-Samples (218 nombres)
 
-Codic trajo la **librerÃ­a completa de Strudel** (`Dirt-Samples`): 2038 archivos
+Codic trajo la **librería completa de Strudel** (`Dirt-Samples`): 2038 archivos
 de audio reales en `samples/`. Cada nombre tiene varias **variantes**; elige
-una con `:n` (nÃºmero, empezando en 0):
+una con `:n` (número, empezando en 0):
 
 ```python
 sonido("808bd").out()          # variante 0 (la primera)
 sonido("808bd:3").out()        # variante 3
-sonido("808bd*4, hh*8").out()  # patrÃ³n con repeticiones
+sonido("808bd*4, hh*8").out()  # patrón con repeticiones
 ```
 
-Si escribes un nÃºmero mayor al disponible, Codic usa la variante 0.
+Si escribes un número mayor al disponible, Codic usa la variante 0.
 
-### BaterÃ­as por banco (las mÃ¡s Ãºtiles)
+### Baterías por banco (las más útiles)
 - **808**: `808` `808bd` `808cy` `808hc` `808ht` `808lc` `808lt` `808mc` `808mt` `808oh` `808sd`
 - **909**: `909` `909bd`
 
-### BaterÃ­a y percusiÃ³n genÃ©rica
-`bd`(24) Â· `sd`(2) Â· `hh`(13) Â· `hh27`(13) Â· `ht`(16) Â· `lt`(16) Â· `mt`(16) Â·
-`oh`(6) Â· `cp`(2) Â· `cr`(6) Â· `cb`(1) Â· `rm`(2) Â· `rs`(1) Â· `sn`(52) Â·
-`perc`(6) Â· `metal`(10) Â· `tok`(4) Â· `tink`(5) Â· `click`(4) Â· `clak`(2) Â·
-`bin`(2) Â· `coins`(1) Â· `can`(14) Â· `bottle`(13) Â· `pebbles`(1) Â·
-`glass`â†’`glasstap`(3) Â· `tabla`(26) Â· `tabla2`(46) Â· `tablex`(3) Â·
-`circus`(3) Â· `tacscan`(22) Â· `sundance`(6) Â· `stomp`(10) Â· `hand`(17)
+### Batería y percusión genérica
+`bd`(24) · `sd`(2) · `hh`(13) · `hh27`(13) · `ht`(16) · `lt`(16) · `mt`(16) ·
+`oh`(6) · `cp`(2) · `cr`(6) · `cb`(1) · `rm`(2) · `rs`(1) · `sn`(52) ·
+`perc`(6) · `metal`(10) · `tok`(4) · `tink`(5) · `click`(4) · `clak`(2) ·
+`bin`(2) · `coins`(1) · `can`(14) · `bottle`(13) · `pebbles`(1) ·
+`glass`→`glasstap`(3) · `tabla`(26) · `tabla2`(46) · `tablex`(3) ·
+`circus`(3) · `tacscan`(22) · `sundance`(6) · `stomp`(10) · `hand`(17)
 
 ### Bajos (bass)
-`bass`(4) Â· `bass0`(3) Â· `bass1`(30) Â· `bass2`(5) Â· `bass3`(11) Â·
-`bassdm`(24) Â· `bassfoo`(3) Â· `jungbass`(20) Â· `jvbass`(13) Â·
-`moog`(7) Â· `subroc3d`(11) Â· `ul`(10) Â· `ulgab`(5)
+`bass`(4) · `bass0`(3) · `bass1`(30) · `bass2`(5) · `bass3`(11) ·
+`bassdm`(24) · `bassfoo`(3) · `jungbass`(20) · `jvbass`(13) ·
+`moog`(7) · `subroc3d`(11) · `ul`(10) · `ulgab`(5)
 
 ### Guitarras / cuerdas / teclados
-`gtr`(3) Â· `psr`(30) Â· `casio`(3) Â· `sid`(12) Â· `juno`(12) Â·
-`sitar`(8) Â· `pad`(3) Â· `padlong`(1) Â· `space`(18) Â· `synth`â†’`synth`
-`mund`â†’`world`(3) Â· `sax`(22) Â· `trump`(11) Â· `v`(6) Â· `ul`(10)
+`gtr`(3) · `psr`(30) · `casio`(3) · `sid`(12) · `juno`(12) ·
+`sitar`(8) · `pad`(3) · `padlong`(1) · `space`(18) · `synth`→`synth`
+`mund`→`world`(3) · `sax`(22) · `trump`(11) · `v`(6) · `ul`(10)
 
 ### Plucks / stabs / arps
-`pluck`(17) Â· `stab`(23) Â· `arp`(2) Â· `arpy`(11) Â· `jab`â†’`gab`(10) Â·
-`gabba`(4) Â· `gabbaloud`(4) Â· `gabbalouder`(4) Â· `flick`(17) Â·
-`future`(17) Â· `print`(11) Â· `proc`(2) Â· `procshort`(8)
+`pluck`(17) · `stab`(23) · `arp`(2) · `arpy`(11) · `jab`→`gab`(10) ·
+`gabba`(4) · `gabbaloud`(4) · `gabbalouder`(4) · `flick`(17) ·
+`future`(17) · `print`(11) · `proc`(2) · `procshort`(8)
 
 ### Beats / breaks / drum machines
-`dr`(42) Â· `dr2`(6) Â· `dr55`(4) Â· `dr_few`(8) Â· `drum`(6) Â·
-`drumtraks`(13) Â· `breaks125`(2) Â· `breaks152`(1) Â· `breaks157`(1) Â·
-`breaks165`(1) Â· `tech`(13) Â· `techno`(7) Â· `house`(8) Â·
-`electro1`(13) Â· `rave`(8) Â· `rave2`(4) Â· `ravemono`(2) Â·
-`hardcore`(12) Â· `gabba`(4) Â· `industrial`(32) Â· `armora`(7) Â·
-`made`(7) Â· `made2`(1) Â· `mash`(2) Â· `mash2`(4) Â· `miniyeah`(4) Â·
-`monsterb`(6) Â· `kicklinn`(1) Â· `clubkick`(5) Â· `hardkick`(6) Â·
-`popkick`(10) Â· `reverbkick`(1) Â· `koy`(2) Â· `tok`(4)
+`dr`(42) · `dr2`(6) · `dr55`(4) · `dr_few`(8) · `drum`(6) ·
+`drumtraks`(13) · `breaks125`(2) · `breaks152`(1) · `breaks157`(1) ·
+`breaks165`(1) · `tech`(13) · `techno`(7) · `house`(8) ·
+`electro1`(13) · `rave`(8) · `rave2`(4) · `ravemono`(2) ·
+`hardcore`(12) · `gabba`(4) · `industrial`(32) · `armora`(7) ·
+`made`(7) · `made2`(1) · `mash`(2) · `mash2`(4) · `miniyeah`(4) ·
+`monsterb`(6) · `kicklinn`(1) · `clubkick`(5) · `hardkick`(6) ·
+`popkick`(10) · `reverbkick`(1) · `koy`(2) · `tok`(4)
 
 ### Voces / palabras / efectos de voz
-`baa`(7) Â· `baa2`(7) Â· `hmm`(1) Â· `mouth`(15) Â· `speech`(7) Â·
-`speechless`(10) Â· `speakspell`(12) Â· `alphabet`(26) Â· `numbers`(9) Â·
-`num`(21) Â· `msg`(9) Â· `fest`(1) Â· `sugar`(2) Â· `yeah`(31) Â·
-`voodoo`(5) Â· `wind`(10)
+`baa`(7) · `baa2`(7) · `hmm`(1) · `mouth`(15) · `speech`(7) ·
+`speechless`(10) · `speakspell`(12) · `alphabet`(26) · `numbers`(9) ·
+`num`(21) · `msg`(9) · `fest`(1) · `sugar`(2) · `yeah`(31) ·
+`voodoo`(5) · `wind`(10)
 
-### Ruido / atmÃ³sferas / objetos
-`noise`(1) Â· `noise2`(8) Â· `birds`(10) Â· `birds3`(19) Â· `bubble`(8) Â·
-`fire`(1) Â· `water`â†’`outdoor`(6) Â· `seawolf`(3) Â· `invaders`(18) Â·
-`incoming`(8) Â· `creak`â†’`crow`(4) Â· `fx`â†’`feelfx`(8) Â· `flick`(17) Â·
-`glitch`(8) Â· `glitch2`(8) Â· `wobble`(1) Â· `voodoo`(5) Â· `latibro`(8) Â·
-`world`(3) Â· `ul`(10)
+### Ruido / atmósferas / objetos
+`noise`(1) · `noise2`(8) · `birds`(10) · `birds3`(19) · `bubble`(8) ·
+`fire`(1) · `water`→`outdoor`(6) · `seawolf`(3) · `invaders`(18) ·
+`incoming`(8) · `creak`→`crow`(4) · `fx`→`feelfx`(8) · `flick`(17) ·
+`glitch`(8) · `glitch2`(8) · `wobble`(1) · `voodoo`(5) · `latibro`(8) ·
+`world`(3) · `ul`(10)
 
 ### Otros (nombres sueltos)
-`ab`(12) Â· `ade`(10) Â· `ades2`(9) Â· `ades3`(7) Â· `ades4`(6) Â· `alex`(2) Â·
-`amencutup`(32) Â· `auto`(11) Â· `bev`(2) Â· `blue`(2) Â· `bend`(4) Â·
-`blip`(2) Â· `bleep`(13) Â· `cc`(6) Â· `chin`(4) Â· `control`(2) Â·
-`cosmicg`(15) Â· `d`(4) Â· `db`(13) Â· `dist`(16) Â· `dork2`(4) Â·
-`dorkbot`(2) Â· `e`(8) Â· `east`(9) Â· `em2`(6) Â· `erk`(1) Â· `f`(1) Â·
-`feel`(7) Â· `fm`(17) Â· `foo`(27) Â· `gab`(10) Â· `glasstap`(3) Â·
-`hc`(6) Â· `haw`(6) Â· `h`(7) Â· `hit`(6) Â· `ho`(6) Â· `hoover`(6) Â·
-`if`(5) Â· `ifdrums`(3) Â· `kurt`(7) Â· `led`(1) Â· `less`(4) Â·
-`linnhats`(6) Â· `mute`(28) Â· `newnotes`(15) Â· `notes`(15) Â·
-`oc`(4) Â· `odx`(15) Â· `off`(1) Â· `peri`(15) Â· `realclaps`(4) Â·
-`sheffield`(1) Â· `short`(5) Â· `sequential`(8) Â· `sf`(18) Â·
-`sheffield`(1) Â· `synth` â†’ no listado Â· `tabla`(26) Â· `tink`(5) Â·
-`toys`(13) Â· `uxay`(3) Â· `xmas`(1) Â· `diphone`(38) Â· `diphone2`(12)
+`ab`(12) · `ade`(10) · `ades2`(9) · `ades3`(7) · `ades4`(6) · `alex`(2) ·
+`amencutup`(32) · `auto`(11) · `bev`(2) · `blue`(2) · `bend`(4) ·
+`blip`(2) · `bleep`(13) · `cc`(6) · `chin`(4) · `control`(2) ·
+`cosmicg`(15) · `d`(4) · `db`(13) · `dist`(16) · `dork2`(4) ·
+`dorkbot`(2) · `e`(8) · `east`(9) · `em2`(6) · `erk`(1) · `f`(1) ·
+`feel`(7) · `fm`(17) · `foo`(27) · `gab`(10) · `glasstap`(3) ·
+`hc`(6) · `haw`(6) · `h`(7) · `hit`(6) · `ho`(6) · `hoover`(6) ·
+`if`(5) · `ifdrums`(3) · `kurt`(7) · `led`(1) · `less`(4) ·
+`linnhats`(6) · `mute`(28) · `newnotes`(15) · `notes`(15) ·
+`oc`(4) · `odx`(15) · `off`(1) · `peri`(15) · `realclaps`(4) ·
+`sheffield`(1) · `short`(5) · `sequential`(8) · `sf`(18) ·
+`sheffield`(1) · `synth` → no listado · `tabla`(26) · `tink`(5) ·
+`toys`(13) · `uxay`(3) · `xmas`(1) · `diphone`(38) · `diphone2`(12)
 
-### Lista completa y exacta (218 nombres, con nÂº de variantes)
+### Lista completa y exacta (218 nombres, con nº de variantes)
 
 ```
 808(6) 808bd(25) 808cy(25) 808hc(5) 808ht(5) 808lc(5) 808lt(5) 808mc(5)
@@ -1487,19 +1556,19 @@ tech(13) techno(7) tink(5) tok(4) toys(13) trump(11) ul(10) ulgab(5)
 uxay(3) v(6) voodoo(5) wind(10) wobble(1) world(3) xmas(1) yeah(31)
 ```
 
-> Â¿Quieres aÃ±adir tus propios samples? Pon archivos `.wav` en `samples/` y
-> regÃ­stralos con `samples({ minombre: ['carpeta/archivo.wav'] })` (funciÃ³n
-> avanzada). El archivo `samples/strudel.json` es el Ã­ndice oficial.
+> ¿Quieres añadir tus propios samples? Pon archivos `.wav` en `samples/` y
+> regístralos con `samples({ minombre: ['carpeta/archivo.wav'] })` (función
+> avanzada). El archivo `samples/strudel.json` es el índice oficial.
 
 ---
 
-## 4 Â· Notas musicales
+## 4 · Notas musicales
 
-Para melodÃ­as usa `nota("...")`. Acepta **espaÃ±ol** y **inglÃ©s**:
+Para melodías usa `nota("...")`. Acepta **español** y **inglés**:
 
 ```python
 nota("do re mi fa sol la si").sintetizador("sierra").out()
-nota("c d e f g a b").sonido("seno").out()      # igual, en inglÃ©s
+nota("c d e f g a b").sonido("seno").out()      # igual, en inglés
 nota("do3 mi3 sol3 do4").out()                   # con octavas
 nota("do#3 reb4 solb5").out()                    # sostenidos (#) y bemoles (b)
 ```
@@ -1508,45 +1577,43 @@ nota("do#3 reb4 solb5").out()                    # sostenidos (#) y bemoles (b)
 - **Sostenido**: `#` o `s` (ej. `do#3`, `fs4`). **Bemol**: `b` (ej. `reb4`, `bb2`).
 - **Octavas**: del `-2` al `10`. Por defecto la 4 (`do3` = Do en octava 3,
   `do4` = Do central).
-- TambiÃ©n acepta **nÃºmeros MIDI** directos con `n("60 64 67")` (60 = Do4).
+- También acepta **números MIDI** directos con `n("60 64 67")` (60 = Do4).
 
 ---
 
-## CÃ³mo elegir el "instrumento"
+## Cómo elegir el "instrumento"
 
-| Quieresâ€¦ | Usa |
+| Quieres… | Usa |
 |----------|-----|
 | Una onda sintetizada | `sonido("sierra")` o `sintetizador("sierra")` |
-| Un sample de baterÃ­a real | `sonido("808bd")` / `sonido("808bd:3")` |
+| Un sample de batería real | `sonido("808bd")` / `sonido("808bd:3")` |
 | Un sample de instrumento | `sonido("bass1")` / `sonido("gtr")` |
-| Una melodÃ­a con onda | `nota("do3").sintetizador("cuadrada")` |
-| Una melodÃ­a sampleada | `nota("do3").sonido("bass1")` (suena al tono del sample) |
+| Una melodía con onda | `nota("do3").sintetizador("cuadrada")` |
+| Una melodía sampleada | `nota("do3").sonido("bass1")` (suena al tono del sample) |
 
 Y no olvides los **modificadores** (volumen, filtro, pan, reverb, etc.) que
-estÃ¡n en la `09-referencia-completa.md`.
-
-
-
+están en la `09-referencia-completa.md`.
 
 
 ===== 11-exportar-y-renderizar.md =====
-# Exportar y renderizar tu canciÃ³n
+
+# Exportar y renderizar tu canción
 
 Codic puede convertir tus canciones de Codang en archivos que cualquiera puede escuchar, sin necesidad de abrir el programa.
 
 ## Renderizar a WAV (audio)
 
-El comando `render` toma tu archivo `.cdc`, lo toca en "cÃ¡mara lenta" internamente y guarda el sonido resultante en un archivo `.wav`. Es ideal para compartir tu tema por WhatsApp, subirlo a SoundCloud o editarlo en otro programa.
+El comando `render` toma tu archivo `.cdc`, lo toca en "cámara lenta" internamente y guarda el sonido resultante en un archivo `.wav`. Es ideal para compartir tu tema por WhatsApp, subirlo a SoundCloud o editarlo en otro programa.
 
 ```bash
 codic render micancion.cdc salida.wav 8
 ```
 
-- `micancion.cdc` â€” tu archivo de Codang.
-- `salida.wav` â€” nombre del archivo de audio que se crearÃ¡ (puedes ponerle otra ruta).
-- `8` â€” segundos que durarÃ¡ el audio (opcional, por defecto 8).
+- `micancion.cdc` — tu archivo de Codang.
+- `salida.wav` — nombre del archivo de audio que se creará (puedes ponerle otra ruta).
+- `8` — segundos que durará el audio (opcional, por defecto 8).
 
-El audio se genera a 44100 Hz en estÃ©reo, con todos los sonidos, efectos, samples y notas que hayas usado. El tempo (`cps`) se respeta tal como lo configuraste en el cÃ³digo.
+El audio se genera a 44100 Hz en estéreo, con todos los sonidos, efectos, samples y notas que hayas usado. El tempo (`cps`) se respeta tal como lo configuraste en el código.
 
 Ejemplo de `micancion.cdc`:
 
@@ -1558,26 +1625,27 @@ bateria.out()
 melodia.out()
 ```
 
-DespuÃ©s de ejecutar el comando tendrÃ¡s `salida.wav` listo para reproducir en cualquier reproductor.
+Después de ejecutar el comando tendrás `salida.wav` listo para reproducir en cualquier reproductor.
 
-> Consejo: si tu canciÃ³n es mÃ¡s larga, aumenta los segundos. El render recorre la canciÃ³n ciclo a ciclo, asÃ­ que todo lo que suene dentro de ese tiempo aparecerÃ¡ en el archivo.
+> Consejo: si tu canción es más larga, aumenta los segundos. El render recorre la canción ciclo a ciclo, así que todo lo que suene dentro de ese tiempo aparecerá en el archivo.
 
 ## Exportar a DAWProject (para ABL Live / Bitwig)
 
-Si quieres abrir tu canciÃ³n en un programa de ediciÃ³n profesional (como ABL Live o Bitwig Studio), usa el comando `export`:
+Si quieres abrir tu canción en un programa de edición profesional (como ABL Live o Bitwig Studio), usa el comando `export`:
 
 ```bash
 codic export micancion.cdc album.dawproject
 ```
 
-Esto crea un proyecto con una pista por cada secciÃ³n de tu canciÃ³n, conservando los sonidos y efectos como clips. Ãbrelo en tu DAW para mezclar, masterizar o aÃ±adir mÃ¡s instrumentos.
+Esto crea un proyecto con una pista por cada sección de tu canción, conservando los sonidos y efectos como clips. Ábrelo en tu DAW para mezclar, masterizar o añadir más instrumentos.
 
-## Diferencias rÃ¡pidas
+## Diferencias rápidas
 
-| Comando | Resultado | Para quÃ© sirve |
+| Comando | Resultado | Para qué sirve |
 | --- | --- | --- |
 | `render` | archivo `.wav` | escuchar y compartir el audio terminado |
 | `export` | archivo `.dawproject` | seguir editando en un programa profesional |
 
-Ambos usan el mismo motor de sonido de Codic, asÃ­ que lo que oyes en vivo es lo que se guarda.
+Ambos usan el mismo motor de sonido de Codic, así que lo que oyes en vivo es lo que se guarda.
+
 

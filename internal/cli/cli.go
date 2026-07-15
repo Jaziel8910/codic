@@ -7,6 +7,10 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"strings"
+
+	"github.com/spf13/viper"
+
 	"github.com/Jaziel8910/codic/internal/audio"
 	"github.com/Jaziel8910/codic/internal/codang"
 	"github.com/Jaziel8910/codic/internal/pattern"
@@ -66,11 +70,31 @@ func renderToFile(inPath, outPath string, seconds float64, normalize bool) error
 		return fmt.Errorf("reading %s: %w", inPath, err)
 	}
 	combined, cps, err := collectPatterns(string(code))
+	// Validate the song: the declared @type must be met (a real, complete song).
+	if prog, perr := codang.Parse(string(code)); perr == nil {
+		errs, warns := codang.ValidateSong(prog)
+		if len(errs) > 0 {
+			return fmt.Errorf("cancion invalida (%s):\n - %s", filepath.Base(inPath), strings.Join(errs, "\n - "))
+		}
+		for _, w := range warns {
+			fmt.Fprintf(os.Stderr, "aviso: %s\n", w)
+		}
+		// Derive length from @cycles + tempo when no explicit -d flag was given.
+		if seconds <= 0 {
+			if d := codang.SongDuration(prog, 0); d > 0 {
+				seconds = d
+			}
+		}
+	}
 	if err != nil {
 		return err
 	}
 	if seconds <= 0 {
-		seconds = 8
+		if d := viper.GetFloat64("default_duration"); d > 0 {
+			seconds = d
+		} else {
+			seconds = 8
+		}
 	}
 	buf, err := audio.RenderPattern(combined, cps, seconds)
 	if err != nil {

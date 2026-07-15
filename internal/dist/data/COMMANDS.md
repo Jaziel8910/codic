@@ -45,6 +45,8 @@ codic [comando] [argumentos] [flags]
 - `codic pkg ...` — gestor de paquetes de patrones/librerías Codang.
 - `codic dj ...` — modo DJ (generación, aprendizaje de género, decks).
 - `codic lang ...` — herramientas del lenguaje (repl, format, lint, docs).
+  - `codic lang types` — lista los 10 tipos de canción (`@type`) y sus mínimos.
+  - `codic lang lint <archivo.cdc>` — valida `@type`, capas, secciones y arreglo.
 - `codic extras ...` — metrónomo, afinador, tap tempo, teoría.
 - `codic config ...` — leer/escribir `config.yaml`.
 - `codic version` — versión, hash git e info del motor.

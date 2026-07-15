@@ -6,6 +6,56 @@ patrón; las funciones sueltas se escriben solas o entre paréntesis.
 
 ---
 
+## Tipos de canción (obligatorio: `@type`)
+
+Toda canción **empieza declarando su tipo** con `@type`. El tipo fija cuánta
+complejidad exige Codang: no puedes declarar una `full-prod-song` y entregar un
+loop suelto de 4 golpes. Si el `.cdc` produce audio (`.out()`) y no declara
+`@type`, el render se rechaza. Consulta los 10 tipos con `codic lang types`.
+
+| Tipo | Ciclos mín. | Capas mín. | Secciones mín. | Título | Arreglo |
+|------|:-----------:|:----------:|:--------------:|:------:|:-------:|
+| `mini-loop` | 2 | 1 | 0 | no | no |
+| `loop` | 8 | 2 | 0 | no | no |
+| `riff` | 16 | 3 | 1 | no | no |
+| `groove` | 24 | 4 | 2 | no | sí |
+| `beat` | 32 | 5 | 3 | sí | sí |
+| `sketch` | 40 | 5 | 3 | sí | sí |
+| `track` | 48 | 6 | 4 | sí | sí |
+| `song` | 64 | 7 | 5 | sí | sí |
+| `epic` | 96 | 8 | 6 | sí | sí |
+| `full-prod-song` | 128 | 8 | 7 | sí | sí |
+
+- **Capas** = cada `.out()` (batería, bajo, armonía, melodía, percusión, fx…).
+- **Secciones** = cada `section("nombre", patron)` (intro, verse, chorus, bridge…).
+- **Arreglo** = unir las secciones con `cat(...)`/`seq(...)` y sacarlas con `.out()`.
+- Cada tipo **sugiere** sus secciones típicas (intro, verse, pre-chorus, chorus,
+  bridge, breakdown, outro). No son obligatorias, pero es la estructura que usa
+  la mayoría; si faltan, Codang lo **avisa** (no bloquea).
+
+### Cabecera de una canción
+
+```
+@type full-prod-song
+@title "Mi Temazo"
+@cycles 128          # duración en ciclos (define lo que dura el render)
+@bpm 120             # o @cps 0.5 (ciclos por segundo)
+
+section("intro",  s("bd ~ ~ ~"))
+section("verse",  s("bd sd"))
+section("chorus", s("bd*2 sd"))
+# … resto de secciones …
+
+cat(s("intro"), s("verse"), s("chorus")).out()   # arreglo
+s("bd*4").out()                                   # capas
+note("c2 e2 g2").out()
+```
+
+La **duración** del render sale de `@cycles` y el tempo (`@cps`, o `@bpm/240`).
+Con `@cycles 128` y `@bpm 120` → 128 / 0.5 = 256 s. La bandera `-d` la sobreescribe.
+
+---
+
 ## Fuentes de sonido (crean patrones)
 
 | Nombre | Qué devuelve |
@@ -22,6 +72,10 @@ patrón; las funciones sueltas se escriben solas o entre paréntesis.
 `pila(a,b,…)`, `secuencia(a,b,…)` / `cat`, `secuenciaRapida` / `fastcat`,
 `secuenciaLenta` / `slowcat`, `polimetro`, `polirritmia`, `timecat`,
 `secuencia` / `seq`, `silencio()`.
+
+`section("nombre", patron)` — nombra una parte de la canción (intro, verse,
+chorus…). Cuenta como sección para el `@type` y devuelve el patrón para poder
+unirlo en el arreglo con `cat(...)`.
 
 ## Mini-notación (dentro de `"…"`)
 
@@ -110,12 +164,16 @@ codic demo                                   # suena una demo
 codic eval "sonido(\"bd sd\").out()"         # evalúa código
 codic file cancion.cdc                       # reproduce un archivo
 codic export cancion.cdc salida.dawproject   # exporta sin sonar
+codic lang types                             # los 10 tipos de canción
+codic lang lint cancion.cdc                  # valida tipo, capas, secciones…
 ```
 
 ---
 
 ## Notas importantes
 
+- Empieza toda canción declarando `@type` (ver "Tipos de canción"); Codang
+  exige la complejidad del tipo elegido y rechaza el render si no se cumple.
 - Siempre termina la idea que quieres oír con `.out()`.
 - Los nombres de función se pasan **entre comillas** a los métodos de azar:
   `sonido("bd").a veces("MiFunc")`.

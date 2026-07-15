@@ -57,7 +57,9 @@ type Evaluator struct {
 	output      Output
 	builtins    map[string]builtinFunc
 	lastPattern pattern.Pattern
-	proj        *project.Project
+	proj *project.Project
+	sections    map[string]pattern.Pattern
+	arrangement []string
 }
 
 // NewEvaluator creates an evaluator with the given output callback.
@@ -1076,6 +1078,7 @@ func (ev *Evaluator) setupBuiltins() {
 		return nil, nil
 	}
 	ev.env.setVar("__cps", 1.0)
+	b["section"] = builtinSection
 	registerExtraBuiltins(b)
 	ev.registerProjectBuiltins()
 }
@@ -1083,4 +1086,38 @@ func (ev *Evaluator) setupBuiltins() {
 // returnValue is a sentinel type for return statements.
 type returnValue struct {
 	value interface{}
+}
+
+func builtinSection(ev *Evaluator, args []Node) (interface{}, error) {
+    if len(args) < 2 {
+        return pattern.Silence(), nil
+    }
+    nameVal, err := ev.evalNode(args[0])
+    if err != nil {
+        return nil, err
+    }
+    pat, err := ev.evalNode(args[1])
+    if err != nil {
+        return nil, err
+    }
+    p := toPattern(pat)
+    ev.registerSection(toStringVal(nameVal), p)
+    return p, nil
+}
+
+func (ev *Evaluator) registerSection(name string, p pattern.Pattern) {
+    if ev.sections == nil {
+        ev.sections = map[string]pattern.Pattern{}
+    }
+    ev.sections[name] = p
+    for _, n := range ev.arrangement {
+        if n == name {
+            return
+        }
+    }
+    ev.arrangement = append(ev.arrangement, name)
+}
+
+func (ev *Evaluator) SectionNames() []string {
+    return ev.arrangement
 }
