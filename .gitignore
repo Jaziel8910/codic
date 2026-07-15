@@ -1,0 +1,33 @@
+# Built binaries (shipped via GitHub Releases / npm)
+codic.exe
+dist/codic-windows.exe
+dist/codic-linux-*
+dist/codic-darwin-*
+dist/samples.zip
+
+# Generated audio previews / renders
+*.wav
+out*.wav
+album*.wav
+playlist*.wav
+repl_preview.wav
+eval_preview.wav
+watch_preview.wav
+serve_preview.wav
+deck_*.wav
+mix.wav
+crossfade.wav
+recording.wav
+*_preview.wav
+*_stems/
+
+# Sample bank is shipped as the release asset samples.zip
+samples/
+
+# Node / npm
+node_modules/
+npm/package-lock.json
+
+# Editor / OS
+.DS_Store
+*.swp
