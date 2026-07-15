@@ -8,7 +8,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"time"
 
@@ -77,6 +79,21 @@ sounds_dir: ` + filepath.Join(home, "sounds") + `
 				fmt.Fprintf(os.Stderr, "  ! quickstart: %v\n", err)
 			} else {
 				fmt.Println("  - QUICKSTART.docx")
+			}
+
+			if err := installSelf(home); err != nil {
+				fmt.Fprintf(os.Stderr, "  ! self-install: %v\n", err)
+			} else {
+				fmt.Println("  - codic command in CODIC/bin")
+			}
+			added, perr := addToPath(filepath.Join(home, "bin"))
+			if perr != nil {
+				fmt.Fprintf(os.Stderr, "  ! could not add to PATH automatically: %v\n", perr)
+				fmt.Fprintln(os.Stderr, "    add CODIC\\bin to PATH to run `codic` from anywhere")
+			} else if added {
+				fmt.Println("  - added CODIC/bin to PATH (open a new terminal to use `codic`)")
+			} else {
+				fmt.Println("  . CODIC/bin already on PATH")
 			}
 
 			if withSamples {
@@ -438,4 +455,71 @@ func makeDocxZip(paras []string) ([]byte, error) {
 
 func escapeXML(s string) string {
 	return strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;").Replace(s)
+}
+
+// installSelf copies the running executable into CODIC/bin so the user gets a
+// stable `codic` command. It is idempotent (no-op if already self).
+func installSelf(home string) error {
+	exe, err := os.Executable()
+	if err != nil {
+		return err
+	}
+	binDir := filepath.Join(home, "bin")
+	if err := os.MkdirAll(binDir, 0o755); err != nil {
+		return err
+	}
+	name := "codic"
+	if runtime.GOOS == "windows" {
+		name = "codic.exe"
+	}
+	dst := filepath.Join(binDir, name)
+	if filepath.Clean(exe) == filepath.Clean(dst) {
+		return nil
+	}
+	return copyFile(exe, dst)
+}
+
+// copyFile copies src to dst, preserving the executable bit on Unix.
+func copyFile(src, dst string) error {
+	in, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer in.Close()
+	out, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+	if _, err := io.Copy(out, in); err != nil {
+		return err
+	}
+	if runtime.GOOS != "windows" {
+		_ = out.Chmod(0o755)
+	}
+	return nil
+}
+
+// addToPath adds dir to the user's PATH (Windows) so `codic` is available
+// from any terminal. It edits only the USER portion (via .NET, which does not
+// truncate at 1024 chars like setx.exe does) and is idempotent.
+// Returns whether it was added (false if already present or unsupported here).
+func addToPath(dir string) (bool, error) {
+	if runtime.GOOS != "windows" {
+		return false, nil
+	}
+	if strings.Contains(os.Getenv("PATH"), dir) {
+		return false, nil
+	}
+	ps := fmt.Sprintf(
+		`$p=[Environment]::GetEnvironmentVariable('PATH','User'); if($p -notlike '*%s*'){ [Environment]::SetEnvironmentVariable('PATH', ($p.TrimEnd(';')+';%s'), 'User') }`,
+		dir, dir)
+	cmd := exec.Command("powershell", "-NoProfile", "-Command", ps)
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		return false, err
+	}
+	// Refresh this process's PATH so later steps see it.
+	os.Setenv("PATH", os.Getenv("PATH")+string(os.PathListSeparator)+dir)
+	return true, nil
 }
