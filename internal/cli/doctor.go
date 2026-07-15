@@ -21,10 +21,10 @@ func doctorCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			ok := true
 			if err := ensureCodicDir(); err != nil {
-				fmt.Printf("[FAIL] ~/.codic: %v\n", err)
+				fmt.Printf("[FAIL] CODIC: %v\n", err)
 				ok = false
 			} else {
-				fmt.Printf("[OK]   ~/.codic at %s\n", CodicDir())
+				fmt.Printf("[OK]   CODIC at %s\n", CodicDir())
 			}
 			if _, err := os.Stat(CodicDir() + string(os.PathSeparator) + "config.yaml"); err != nil {
 				fmt.Println("[WARN] no config.yaml (run `codic config init`)")
@@ -79,7 +79,7 @@ func doctorCmd() *cobra.Command {
 			if err := ensureCodicDir(); err != nil {
 				return err
 			}
-			fmt.Println("repaired: ensured ~/.codic exists")
+			fmt.Println("repaired: ensured CODIC exists")
 			return nil
 		},
 	})

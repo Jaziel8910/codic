@@ -2,12 +2,14 @@ package cli
 
 import (
 	"archive/zip"
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -17,30 +19,42 @@ import (
 
 // type manifestJSON mirrors dist/data/manifest.json.
 type manifestJSON struct {
-	Version     string `json:"version"`
+	Version    string `json:"version"`
 	SamplesURL string `json:"samples_url"`
+	Home       string `json:"home"`
 }
 
-// installCmd scaffolds the full user environment: config, stdlib,
-// templates, example modules and (optionally) the sample bank.
+// installCmd scaffolds the full CODIC workspace: config, stdlib, templates,
+// examples, documentation, the QUICKSTART.docx guide and (optionally) the
+// sample bank. It also backs up any pre-existing workspace first.
 func installCmd() *cobra.Command {
 	var withSamples bool
 	cmd := &cobra.Command{
 		Use:   "install",
-		Short: "Install Codic: config, stdlib, templates and sample bank",
-		Long: `Scaffolds ~/.codic with the standard library, project templates,
-example modules and (with --samples) the drum/synth sample bank.
+		Short: "Install Codic: workspace, config, stdlib, templates and sample bank",
+		Long: `Scaffolds the CODIC global workspace with the standard library,
+project templates, example modules, documentation and (with --samples) the
+drum/synth sample bank.
 
-Run this once after first download, or any time you want to
-re-sync your local environment.`,
+Run this once after first download, or any time you want to re-sync your
+local environment.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			home := CodicDir()
 			fmt.Printf("installing Codic into %s\n", home)
 
+			if _, err := os.Stat(home); err == nil {
+				fmt.Println("  . existing workspace found — backing up first")
+				if bp, berr := createBackup(home); berr == nil {
+					fmt.Printf("    backup: %s\n", bp)
+				} else {
+					fmt.Fprintf(os.Stderr, "    ! backup failed: %v\n", berr)
+				}
+			}
+
 			if err := dist.Install(home); err != nil {
 				return fmt.Errorf("scaffold failed: %w", err)
 			}
-			fmt.Println("  - stdlib, templates, examples")
+			fmt.Println("  - stdlib, templates, examples, docs")
 
 			p, cerr := ensureConfigFile()
 			if cerr != nil {
@@ -51,7 +65,7 @@ re-sync your local environment.`,
 default_duration: 8
 sample_rate: 44100
 output_dir: ` + filepath.Join(home, "out") + `
-samples_dir: ` + filepath.Join(home, "samples") + `
+sounds_dir: ` + filepath.Join(home, "sounds") + `
 `
 				if werr := os.WriteFile(p, []byte(defaults), 0o644); werr != nil {
 					return werr
@@ -59,19 +73,25 @@ samples_dir: ` + filepath.Join(home, "samples") + `
 			}
 			fmt.Println("  - config.yaml")
 
+			if err := createQuickstartDocx(filepath.Join(home, "QUICKSTART.docx")); err != nil {
+				fmt.Fprintf(os.Stderr, "  ! quickstart: %v\n", err)
+			} else {
+				fmt.Println("  - QUICKSTART.docx")
+			}
+
 			if withSamples {
 				if err := installSamples(home); err != nil {
 					fmt.Fprintf(os.Stderr, "  ! samples: %v\n", err)
 					fmt.Fprintln(os.Stderr, "    you can run `codic install --samples` later (needs internet)")
 				} else {
-					fmt.Println("  - sample bank")
+					fmt.Println("  - sample bank (sounds/)")
 				}
 			} else {
 				fmt.Println("  . skip sample bank (use `codic install --samples`)")
 			}
 
-			fmt.Printf("\ndone. try:  codic play %s\n",
-				filepath.Join(home, "examples", "basic.cdc"))
+			fmt.Printf("\ndone. your workspace is at: %s\n", home)
+			fmt.Printf("try:  codic play %s\n", filepath.Join(home, "examples", "basic.cdc"))
 			return nil
 		},
 	}
@@ -79,11 +99,94 @@ samples_dir: ` + filepath.Join(home, "samples") + `
 	return cmd
 }
 
+// backupCmd zips the CODIC workspace (minus backups/ and out/) into backups/.
+func backupCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "backup",
+		Short: "Back up the CODIC workspace to CODIC/backups",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			home := CodicDir()
+			if _, err := os.Stat(home); err != nil {
+				return fmt.Errorf("CODIC workspace not found at %s (run `codic install`)", home)
+			}
+			path, err := createBackup(home)
+			if err != nil {
+				return err
+			}
+			fmt.Printf("backup created: %s\n", path)
+			return nil
+		},
+	}
+}
+
+// createBackup writes a timestamped zip of home into home/backups, skipping
+// the backups and out directories (to avoid recursion and re-saving renders).
+func createBackup(home string) (string, error) {
+	if err := os.MkdirAll(filepath.Join(home, "backups"), 0o755); err != nil {
+		return "", err
+	}
+	stamp := time.Now().Format("20060102-150405")
+	outPath := filepath.Join(home, "backups", "CODIC-"+stamp+".zip")
+	f, err := os.Create(outPath)
+	if err != nil {
+		return "", err
+	}
+	defer f.Close()
+	zw := zip.NewWriter(f)
+	defer zw.Close()
+
+	base := home
+	err = filepath.Walk(base, func(p string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		rel, err := filepath.Rel(base, p)
+		if err != nil {
+			return err
+		}
+		if rel == "." {
+			return nil
+		}
+		if rel == "backups" && info.IsDir() {
+			return filepath.SkipDir
+		}
+		if rel == "out" && info.IsDir() {
+			return filepath.SkipDir
+		}
+		hdr, err := zip.FileInfoHeader(info)
+		if err != nil {
+			return err
+		}
+		hdr.Name = filepath.ToSlash(rel)
+		if info.IsDir() {
+			hdr.Name += "/"
+		}
+		w, err := zw.Create(hdr.Name)
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
+		in, err := os.Open(p)
+		if err != nil {
+			return err
+		}
+		defer in.Close()
+		_, err = io.Copy(w, in)
+		return err
+	})
+	if err != nil {
+		return "", err
+	}
+	return outPath, nil
+}
+
 // installSamples downloads the sample bank from the release and unzips it
-// into ~/.codic/samples. Tolerates being offline (returns an error
-// that the caller prints without aborting the rest of the install).
+// into CODIC/sounds. Tolerates being offline (returns an error that the
+// caller prints without aborting the rest of the install).
 func installSamples(home string) error {
-	dest := filepath.Join(home, "samples")
+	dest := filepath.Join(home, "sounds")
 	if _, err := os.Stat(filepath.Join(dest, "strudel.json")); err == nil {
 		return nil // already present
 	}
@@ -94,7 +197,7 @@ func installSamples(home string) error {
 	}
 
 	fmt.Printf("  > downloading sample bank from %s\n", url)
-	tmp := filepath.Join(home, "samples.zip")
+	tmp := filepath.Join(home, "sounds.zip")
 	if err := downloadFile(url, tmp); err != nil {
 		return err
 	}
@@ -103,7 +206,36 @@ func installSamples(home string) error {
 	if err := unzip(tmp, dest); err != nil {
 		return err
 	}
+	// The release zip may contain a top-level "samples/" folder; flatten it
+	// so strudel.json ends up directly under dest.
+	if err := flattenSamplesDir(dest); err != nil {
+		return err
+	}
 	return nil
+}
+
+// flattenSamplesDir moves the contents of a nested "samples/" subfolder up
+// into dest when the archive was published with a redundant top directory.
+func flattenSamplesDir(dest string) error {
+	nested := filepath.Join(dest, "samples")
+	if _, err := os.Stat(filepath.Join(nested, "strudel.json")); err != nil {
+		return nil // not nested — already in the right place
+	}
+	entries, err := os.ReadDir(nested)
+	if err != nil {
+		return err
+	}
+	for _, e := range entries {
+		src := filepath.Join(nested, e.Name())
+		dst := filepath.Join(dest, e.Name())
+		if _, err := os.Stat(dst); err == nil {
+			continue // keep existing file at dest
+		}
+		if err := os.Rename(src, dst); err != nil {
+			return err
+		}
+	}
+	return os.RemoveAll(nested)
 }
 
 // sampleURL reads the embedded manifest to find the release asset URL.
@@ -217,4 +349,93 @@ func within(base, target string) bool {
 		return false
 	}
 	return rel != ".." && !filepath.HasPrefix(rel, ".."+string(filepath.Separator))
+}
+
+// createQuickstartDocx writes a human-friendly .docx guide into the
+// workspace (only if it does not already exist, so user edits are kept).
+func createQuickstartDocx(path string) error {
+	if _, err := os.Stat(path); err == nil {
+		return nil
+	}
+	home := CodicDir()
+	paras := []string{
+		"Codic - Guia rapida para humanos",
+		"",
+		"Codic es un estudio de musica que controlas escribiendo texto (lenguaje Codang, archivos .cdc).",
+		"Tu carpeta de trabajo global se llama CODIC y vive en tu carpeta de usuario.",
+		"",
+		"Como empezar:",
+		"1) Abre la terminal (Boton Inicio -> escribe 'PowerShell' -> Enter).",
+		"2) Escribe:  codic install --samples   (descarga los sonidos una vez, necesita internet).",
+		"3) Prueba:   codic play \"" + home + "\\examples\\basic.cdc\"",
+		"",
+		"Comandos utiles:",
+		"  codic new track <nombre>    crea una cancion nueva",
+		"  codic play <archivo.cdc>    genera audio y lo reproduce",
+		"  codic render <archivo.cdc>  guarda el audio en un archivo .wav",
+		"  codic backup                hace una copia de seguridad de CODIC",
+		"",
+		"Para que una IA te ayude con tu musica: dile que lea AGENTS.md y COMMANDS.md de esta carpeta.",
+		"La documentacion completa esta en la carpeta docs/.",
+	}
+	b, err := makeDocxZip(paras)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, b, 0o644)
+}
+
+// makeDocxZip builds a minimal but valid .docx (Office Open XML) from a list
+// of paragraphs and returns the file bytes.
+func makeDocxZip(paras []string) ([]byte, error) {
+	var buf bytes.Buffer
+	zw := zip.NewWriter(&buf)
+	write := func(name, content string) error {
+		w, err := zw.Create(name)
+		if err != nil {
+			return err
+		}
+		_, err = io.WriteString(w, content)
+		return err
+	}
+
+	contentTypes := `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+<Default Extension="xml" ContentType="application/xml"/>
+<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`
+	if err := write("[Content_Types].xml", contentTypes); err != nil {
+		return nil, err
+	}
+
+	rels := `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`
+	if err := write("_rels/.rels", rels); err != nil {
+		return nil, err
+	}
+
+	var body strings.Builder
+	body.WriteString(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>`)
+	body.WriteString(`<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>`)
+	for _, p := range paras {
+		body.WriteString(`<w:p><w:r><w:t xml:space="preserve">`)
+		body.WriteString(escapeXML(p))
+		body.WriteString(`</w:t></w:r></w:p>`)
+	}
+	body.WriteString(`</w:body></w:document>`)
+	if err := write("word/document.xml", body.String()); err != nil {
+		return nil, err
+	}
+
+	if err := zw.Close(); err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
+}
+
+func escapeXML(s string) string {
+	return strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;").Replace(s)
 }

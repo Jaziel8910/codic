@@ -14,7 +14,7 @@ import (
 func configCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "config",
-		Short: "Manage the ~/.codic/config.yaml configuration",
+		Short: "Manage the CODIC/config.yaml configuration",
 	}
 	cmd.AddCommand(configInitCmd())
 	cmd.AddCommand(configGetCmd())

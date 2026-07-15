@@ -42,11 +42,21 @@ type GenreModel struct {
 // ---- directory / persistence ----
 
 func djDir() string {
-	home, err := os.UserHomeDir()
-	if err != nil {
-		home = "."
+	home := userProfileDir()
+	return filepath.Join(home, "CODIC", "dj")
+}
+
+// userProfileDir returns the user's profile folder (C:\Users\<you>),
+// preferring USERPROFILE over the OS home dir so data never lands on the
+// Desktop by accident.
+func userProfileDir() string {
+	if p := os.Getenv("USERPROFILE"); p != "" {
+		return p
 	}
-	return filepath.Join(home, ".codic", "dj")
+	if home, err := os.UserHomeDir(); err == nil {
+		return home
+	}
+	return "."
 }
 
 func genrePath(genre string) string {

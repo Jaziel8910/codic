@@ -15,13 +15,15 @@ import (
 // Version is set at build time via -ldflags.
 var Version = "v2.0.0-dev"
 
-// CodicDir returns the user-level config directory (~/.codic).
+// CodicDir returns the global CODIC workspace directory, created inside the
+// user's home folder. This is where albums, projects, sounds, docs and
+// backups live.
 func CodicDir() string {
 	home, err := os.UserHomeDir()
 	if err != nil {
-		return ".codic"
+		return "CODIC"
 	}
-	return filepath.Join(home, ".codic")
+	return filepath.Join(home, "CODIC")
 }
 
 // ensureCodicDir creates ~/.codic if it does not exist.

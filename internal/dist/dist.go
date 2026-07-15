@@ -17,11 +17,11 @@ var dataFS embed.FS
 // Assets returns the embedded distribution filesystem.
 func Assets() fs.FS { return dataFS }
 
-// Install scaffolds the user directory ~/.codic with the embedded
-// stdlib, templates and examples, and creates the runtime folders
-// (instruments, dj, packages, samples, out). It does NOT fetch the
-// sample bank — that is done by the CLI install command so it can show
-// progress and tolerate being offline.
+// Install scaffolds the global CODIC workspace with the embedded stdlib,
+// templates, examples and documentation, and creates the runtime folders
+// (sounds, finals, projects, backups, instruments, dj, packages, out, tmp).
+// It does NOT fetch the sample bank — that is done by the CLI install
+// command so it can show progress and tolerate being offline.
 func Install(home string) error {
 	if err := os.MkdirAll(home, 0o755); err != nil {
 		return err
@@ -30,13 +30,27 @@ func Install(home string) error {
 		{"data/stdlib", "stdlib"},
 		{"data/templates", "templates"},
 		{"data/examples", "examples"},
+		{"data/docs", "docs"},
 	}
 	for _, d := range dirs {
 		if err := copyTree(d.from, filepath.Join(home, d.to)); err != nil {
 			return err
 		}
 	}
-	for _, sub := range []string{"instruments", "dj", "packages", "samples", "out"} {
+	files := []struct{ from, to string }{
+		{"data/AGENTS.md", "AGENTS.md"},
+		{"data/COMMANDS.md", "COMMANDS.md"},
+	}
+	for _, f := range files {
+		b, err := dataFS.ReadFile(f.from)
+		if err != nil {
+			return err
+		}
+		if err := os.WriteFile(filepath.Join(home, f.to), b, 0o644); err != nil {
+			return err
+		}
+	}
+	for _, sub := range []string{"sounds", "finals", "projects", "backups", "instruments", "dj", "packages", "out", "tmp"} {
 		if err := os.MkdirAll(filepath.Join(home, sub), 0o755); err != nil {
 			return err
 		}

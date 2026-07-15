@@ -38,7 +38,7 @@ or open it with your OS player. No TUI, no realtime engine.`,
 		},
 	}
 
-	root.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default ~/.codic/config.yaml)")
+	root.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default CODIC/config.yaml)")
 
 	root.AddCommand(newCmd())
 	root.AddCommand(playCmd())
@@ -64,6 +64,7 @@ or open it with your OS player. No TUI, no realtime engine.`,
 	root.AddCommand(djCmd())
 	root.AddCommand(pkgCmd())
 	root.AddCommand(installCmd())
+	root.AddCommand(backupCmd())
 
 	return root
 }

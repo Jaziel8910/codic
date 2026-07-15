@@ -184,15 +184,18 @@ func InitSamples() error {
 		candidates = append(candidates, env)
 	}
 	candidates = append(candidates,
-		"samples",
-		filepath.Join("..", "samples"),
-		filepath.Join("..", "..", "samples"),
+		"sounds",
+		filepath.Join("..", "sounds"),
+		filepath.Join("..", "..", "sounds"),
 	)
 	if exe, err := os.Executable(); err == nil {
-		candidates = append(candidates, filepath.Join(filepath.Dir(exe), "samples"))
+		candidates = append(candidates, filepath.Join(filepath.Dir(exe), "sounds"))
 	}
-	if home, err := os.UserHomeDir(); err == nil {
-		candidates = append(candidates, filepath.Join(home, ".codic", "samples"))
+	if home := userProfileDir(); home != "" {
+		candidates = append(candidates,
+			filepath.Join(home, "CODIC", "sounds"),
+			filepath.Join(home, ".codic", "samples"),
+		)
 	}
 	for _, c := range candidates {
 		if _, err := os.Stat(filepath.Join(c, "strudel.json")); err == nil {
@@ -220,4 +223,17 @@ func SampleRoot() string {
 	sampleMu.Lock()
 	defer sampleMu.Unlock()
 	return sampleRoot
+}
+
+// userProfileDir returns the user's profile folder (C:\Users\<you>),
+// preferring USERPROFILE over the OS home dir so the workspace never lands
+// on the Desktop by accident.
+func userProfileDir() string {
+	if p := os.Getenv("USERPROFILE"); p != "" {
+		return p
+	}
+	if home, err := os.UserHomeDir(); err == nil {
+		return home
+	}
+	return ""
 }
